@@ -1,0 +1,15 @@
+# Theme development files; keep these in Git, but off the live server
+wp-content/themes/MNYphoto/src/
+wp-content/themes/MNYphoto/build/
+wp-content/themes/MNYphoto/node_modules/
+wp-content/themes/MNYphoto/package.json
+wp-content/themes/MNYphoto/package-lock.json
+wp-content/themes/MNYphoto/.gitignore
+wp-content/themes/MNYphoto/AGENTS.md
+wp-content/themes/MNYphoto/README.md
+wp-content/themes/MNYphoto/accessibility/
+wp-content/themes/MNYphoto/.stylelintrc.json
+wp-content/themes/MNYphoto/eslint.config.cjs
+
+# Do not deploy CSS source maps
+wp-content/themes/MNYphoto/dist/**/*.map
