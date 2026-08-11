@@ -1,22 +1,56 @@
 <?php
-$mnyphoto_home_work = array(
-	array( 'editorial-arcade.webp', __( 'Editorial portrait', 'mnyphoto-theme' ), __( 'Two people moving through a monochrome Florentine arcade.', 'mnyphoto-theme' ), 'portrait' ),
-	array( 'sugarcane-still-life.webp', __( 'Commercial still life', 'mnyphoto-theme' ), __( 'Three glasses of fresh sugarcane juice on a wood table.', 'mnyphoto-theme' ), 'square' ),
-	array( 'cards-overhead.webp', __( 'Lifestyle story', 'mnyphoto-theme' ), __( 'Hands sharing a card game, photographed from above.', 'mnyphoto-theme' ), 'landscape' ),
+/**
+ * Front-page five-practice Services showcase.
+ *
+ * @package NolanYoungThemeTemplate99Master
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+$mega_menu_data  = nytt99_mega_menu_data();
+$service_items   = $mega_menu_data['services']['items'] ?? array();
+$service_visuals = array(
+	'web'       => 'device-system.svg',
+	'plugin'    => 'case-study-interface.svg',
+	'seo'       => 'demand-signal-chart.svg',
+	'analytics' => 'dashboard-grid.svg',
+	'ai'        => 'team-network.svg',
 );
 ?>
-<section class="home-work section-pad section-dark">
-	<div class="wrap">
-		<?php mnyphoto_section_intro( __( 'Selected frames', 'mnyphoto-theme' ), __( 'Images that hold attention, then reveal the story.', 'mnyphoto-theme' ) ); ?>
-		<div class="editorial-grid">
-			<?php foreach ( $mnyphoto_home_work as $index => $item ) : ?>
-				<figure class="editorial-tile editorial-tile--<?php echo esc_attr( $item[3] ); ?> reveal" data-modal-image="<?php echo esc_url( get_theme_file_uri( 'dist/img/' . $item[0] ) ); ?>" data-modal-alt="<?php echo esc_attr( $item[2] ); ?>" tabindex="0" role="button" aria-label="<?php echo esc_attr( sprintf( __( 'Enlarge %s', 'mnyphoto-theme' ), $item[1] ) ); ?>">
-					<?php echo mnyphoto_image( $item[0], $item[2] ); ?>
-					<figcaption><span>0<?php echo esc_html( $index + 1 ); ?></span><strong><?php echo esc_html( $item[1] ); ?></strong></figcaption>
-				</figure>
+<section id="selected-work" class="service-showcase" data-home-chapter>
+	<div class="content-wrap">
+		<header class="service-showcase__header" data-reveal>
+			<h2><?php esc_html_e( 'Services', 'nolan-young-theme-template-99-master' ); ?></h2>
+		</header>
+
+		<div class="service-showcase__grid">
+			<?php foreach ( $service_items as $index => $service ) : ?>
+				<?php
+				$visual_key  = $service['visual'] ?? '';
+				$visual_file = $service_visuals[ $visual_key ] ?? 'device-system.svg';
+				$image_url   = get_theme_file_uri( 'dist/images/' . $visual_file );
+				$link_label  = sprintf(
+					/* translators: %s: service title. */
+					__( 'Explore %s', 'nolan-young-theme-template-99-master' ),
+					$service['title']
+				);
+				?>
+				<article class="service-showcase__card service-showcase__card--<?php echo esc_attr( $visual_key ); ?>" data-reveal>
+					<a class="service-showcase__media" href="<?php echo esc_url( $service['url'] ); ?>" aria-label="<?php echo esc_attr( $link_label ); ?>">
+						<span class="service-showcase__media-number" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span>
+						<img src="<?php echo esc_url( $image_url ); ?>" alt="" loading="lazy" decoding="async">
+					</a>
+
+					<div class="service-showcase__copy">
+						<h3><?php echo esc_html( $service['title'] ); ?></h3>
+						<p><?php echo esc_html( $service['description'] ); ?></p>
+						<a class="service-showcase__link" href="<?php echo esc_url( $service['url'] ); ?>">
+							<span><?php echo esc_html( $link_label ); ?></span>
+							<i aria-hidden="true"></i>
+						</a>
+					</div>
+				</article>
 			<?php endforeach; ?>
 		</div>
-		<a class="text-link text-link--light" href="<?php echo esc_url( mnyphoto_page_url( 'work' ) ); ?>"><?php esc_html_e( 'Enter the portfolio', 'mnyphoto-theme' ); ?> →</a>
 	</div>
-	<div class="image-modal" data-image-modal hidden role="dialog" aria-modal="true" aria-label="<?php esc_attr_e( 'Image preview', 'mnyphoto-theme' ); ?>"><button type="button" class="image-modal__close" data-modal-close aria-label="<?php esc_attr_e( 'Close image preview', 'mnyphoto-theme' ); ?>">×</button><img alt=""></div>
 </section>

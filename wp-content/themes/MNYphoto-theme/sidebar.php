@@ -1,5 +1,23 @@
-<aside class="sidebar" aria-label="<?php esc_attr_e( 'Journal sidebar', 'mnyphoto-theme' ); ?>">
-	<?php if ( is_active_sidebar( 'journal-sidebar' ) ) : dynamic_sidebar( 'journal-sidebar' ); else : ?>
-		<section class="sidebar-widget"><h2 class="sidebar-widget__title"><?php esc_html_e( 'Explore the archive', 'mnyphoto-theme' ); ?></h2><?php get_search_form(); ?></section>
-	<?php endif; ?>
+<?php
+/**
+ * Widget sidebar.
+ *
+ * @package NolanYoungThemeTemplate99Master
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	return;
+}
+?>
+<aside class="sidebar" aria-label="<?php esc_attr_e( 'Supporting content', 'nolan-young-theme-template-99-master' ); ?>">
+	<div class="sidebar__header">
+		<div>
+			<p class="eyebrow"><?php esc_html_e( 'Explore further', 'nolan-young-theme-template-99-master' ); ?></p>
+			<strong><?php esc_html_e( 'Supporting routes', 'nolan-young-theme-template-99-master' ); ?></strong>
+		</div>
+		<span aria-hidden="true">↘</span>
+	</div>
+	<?php dynamic_sidebar( 'sidebar-1' ); ?>
 </aside>

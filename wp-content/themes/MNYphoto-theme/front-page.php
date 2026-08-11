@@ -8,5 +8,4 @@ get_header();
 	<?php get_template_part( 'template-parts/page-front-page/content', 'front-page-process' ); ?>
 	<?php get_template_part( 'template-parts/page-front-page/content', 'front-page-cta' ); ?>
 </main>
-<?php
-get_footer();
+<?php get_footer();

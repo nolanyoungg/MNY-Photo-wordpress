@@ -1,20 +1,41 @@
 <?php
-/** Theme presentation settings. */
+/**
+ * Theme Customizer settings.
+ *
+ * @package NolanYoungThemeTemplate99Master
+ */
 
-function mnyphoto_customize_register( $wp_customize ) {
-	$wp_customize->add_section(
-		'mnyphoto_studio',
-		array( 'title' => __( 'MNY Photo studio details', 'mnyphoto-theme' ), 'priority' => 35 )
+defined( 'ABSPATH' ) || exit;
+
+/**
+ * Register Customizer fields owned by this theme.
+ *
+ * @param WP_Customize_Manager $customize Customizer manager instance.
+ * @return void
+ */
+function nytt99_customize( $customize ) {
+	$customize->add_section(
+		'nytt99_contact',
+		array(
+			'title' => __( 'Studio contact details', 'nolan-young-theme-template-99-master' ),
+		)
 	);
-	$settings = array(
-		'mnyphoto_contact_email' => array( 'label' => __( 'Contact email', 'mnyphoto-theme' ), 'default' => get_option( 'admin_email' ), 'sanitize' => 'sanitize_email', 'type' => 'email' ),
-		'mnyphoto_location'      => array( 'label' => __( 'Availability line', 'mnyphoto-theme' ), 'default' => __( 'Available for commissions worldwide', 'mnyphoto-theme' ), 'sanitize' => 'sanitize_text_field', 'type' => 'text' ),
-		'mnyphoto_instagram'     => array( 'label' => __( 'Instagram URL', 'mnyphoto-theme' ), 'default' => '', 'sanitize' => 'esc_url_raw', 'type' => 'url' ),
-		'mnyphoto_linkedin'      => array( 'label' => __( 'LinkedIn URL', 'mnyphoto-theme' ), 'default' => '', 'sanitize' => 'esc_url_raw', 'type' => 'url' ),
+
+	$customize->add_setting(
+		'nytt99_email',
+		array(
+			'default'           => 'hello@northstar.studio',
+			'sanitize_callback' => 'sanitize_email',
+		)
 	);
-	foreach ( $settings as $id => $setting ) {
-		$wp_customize->add_setting( $id, array( 'default' => $setting['default'], 'sanitize_callback' => $setting['sanitize'], 'transport' => 'refresh' ) );
-		$wp_customize->add_control( $id, array( 'label' => $setting['label'], 'section' => 'mnyphoto_studio', 'type' => $setting['type'] ) );
-	}
+
+	$customize->add_control(
+		'nytt99_email',
+		array(
+			'label'   => __( 'Email address', 'nolan-young-theme-template-99-master' ),
+			'section' => 'nytt99_contact',
+			'type'    => 'email',
+		)
+	);
 }
-add_action( 'customize_register', 'mnyphoto_customize_register' );
+add_action( 'customize_register', 'nytt99_customize' );

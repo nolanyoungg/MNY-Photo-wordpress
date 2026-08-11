@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="Enterprise dashboard interface illustration">
+  <rect width="960" height="600" rx="40" fill="#062653"/>
+  <rect x="28" y="28" width="904" height="56" rx="16" fill="#FAF3E0" opacity=".1"/>
+  <circle cx="62" cy="56" r="8" fill="#FF6B35"/><circle cx="88" cy="56" r="8" fill="#FF6B35" opacity=".65"/><circle cx="114" cy="56" r="8" fill="#FF6B35" opacity=".35"/>
+  <rect x="28" y="112" width="214" height="460" rx="24" fill="#FAF3E0"/>
+  <rect x="270" y="112" width="662" height="270" rx="24" fill="#F6F4F0"/>
+  <rect x="270" y="410" width="317" height="162" rx="24" fill="#FAF3E0"/>
+  <rect x="615" y="410" width="317" height="162" rx="24" fill="#F6F4F0"/>
+  <path d="M320 320 415 255l80 30 95-105 95 38 155-80" fill="none" stroke="#FF6B35" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
+  <g fill="#062653" opacity=".22"><rect x="62" y="164" width="138" height="14" rx="7"/><rect x="62" y="210" width="104" height="14" rx="7"/><rect x="62" y="256" width="122" height="14" rx="7"/></g>
+</svg>

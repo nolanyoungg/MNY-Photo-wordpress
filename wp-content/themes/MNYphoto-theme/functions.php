@@ -1,24 +1,24 @@
 <?php
 /**
- * MNY Photo theme bootstrap.
+ * Theme bootstrap.
  *
- * @package MNYphoto
+ * @package NolanYoungThemeTemplate99Master
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
-define( 'MNYPHOTO_VERSION', '2.0.0' );
-
-$mnyphoto_modules = array(
-	'inc/setup.php',
-	'inc/helpers.php',
-	'inc/navigation.php',
-	'inc/enqueue.php',
-	'inc/customizer.php',
+$nytt99_includes = array(
+	'/inc/setup.php',
+	'/inc/helpers.php',
+	'/inc/enqueue.php',
+	'/inc/template-tags.php',
+	'/inc/customizer.php',
+	'/inc/navigation.php',
+	'/inc/contact.php',
 );
 
-foreach ( $mnyphoto_modules as $mnyphoto_module ) {
-	require_once get_theme_file_path( $mnyphoto_module );
+foreach ( $nytt99_includes as $nytt99_include ) {
+	require_once get_theme_file_path( $nytt99_include );
 }
+
+unset( $nytt99_include, $nytt99_includes );
