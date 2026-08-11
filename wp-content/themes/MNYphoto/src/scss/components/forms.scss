@@ -1,0 +1,90 @@
+@use '../abstracts' as *;
+
+.form-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.field { display: grid; gap: .45rem; }
+.field--full { grid-column: 1 / -1; }
+
+.field label {
+	color: $navy;
+	font-size: .78rem;
+	font-weight: 800;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+}
+
+input,
+select,
+textarea {
+	width: 100%;
+	border: 1px solid $line;
+	border-radius: .75rem;
+	padding: .9rem 1rem;
+	background: rgba($warm-cream, .72);
+	color: $navy;
+	transition: border-color $transition, box-shadow $transition;
+}
+
+input:hover,
+select:hover,
+textarea:hover { border-color: rgba($navy, .45); }
+textarea { min-height: 9rem; resize: vertical; }
+
+.mock-form {
+	@include card;
+
+	padding: clamp(1.5rem, 4vw, 3rem);
+	background: $warm-cream;
+}
+
+.mock-form > label,
+.mock-form fieldset { display: grid; gap: .45rem; margin: 1.25rem 0 0; }
+
+.mock-form label > span,
+.mock-form legend { color: $navy; font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.mock-form fieldset { padding: 0; border: 0; }
+.mock-form .button { margin-top: 1rem; }
+.field-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.25rem; }
+.field-grid label { display: grid; gap: .45rem; }
+
+.mock-form__note {
+	display: flex;
+	gap: .65rem;
+	align-items: center;
+	margin-top: 1rem;
+	color: $navy-soft;
+	font-size: .78rem;
+}
+
+.mock-form__note::before {
+	width: .5rem;
+	height: .5rem;
+	border-radius: 50%;
+	background: $navy;
+	content: "";
+}
+
+.search-form {
+	display: flex;
+	gap: .65rem;
+}
+
+.search-form label { flex: 1; }
+.search-form .search-submit {
+	width: auto;
+	border-color: $navy;
+	background: $navy;
+	color: $warm-cream;
+	font-weight: 800;
+	cursor: pointer;
+}
+
+@media (max-width: 620px) {
+	.form-grid,
+	.field-grid { grid-template-columns: 1fr; }
+	.field--full { grid-column: auto; }
+}

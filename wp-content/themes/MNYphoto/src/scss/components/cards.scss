@@ -1,0 +1,260 @@
+@use '../abstracts' as *;
+
+.card-grid,
+.feature-grid,
+.project-grid,
+.metric-grid,
+.bento-grid,
+.channel-grid,
+.resource-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.card,
+.enterprise-card,
+.metric-card,
+.project-card,
+.channel-card {
+	@include card;
+
+	padding: clamp(1.35rem, 3vw, 2rem);
+}
+
+.enterprise-card,
+.project-card,
+.channel-card {
+	@include interactive-card;
+
+	position: relative;
+	overflow: hidden;
+}
+
+.enterprise-card__top,
+.project-card__meta,
+.card__meta {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	align-items: center;
+	margin-bottom: 2rem;
+	color: $navy-soft;
+	font-size: .75rem;
+	font-weight: 800;
+	letter-spacing: .09em;
+	text-transform: uppercase;
+}
+
+.card__icon,
+.enterprise-card__icon {
+	display: grid;
+	width: 3rem;
+	height: 3rem;
+	place-items: center;
+	border-radius: .75rem;
+	background: $warm-cream;
+	color: $navy;
+	font-weight: 900;
+}
+
+.metric-card strong,
+.metric strong,
+[data-metric] {
+	display: block;
+	color: $navy;
+	font-size: clamp(2rem, 4vw, 3.75rem);
+	font-weight: 850;
+	letter-spacing: -.06em;
+	line-height: 1;
+}
+
+.metric-card span,
+.metric span { color: $navy-soft; }
+
+.tag-list,
+.chip-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .45rem;
+	padding: 0;
+	margin: 1.5rem 0 0;
+	list-style: none;
+}
+
+.tag-list li,
+.chip {
+	padding: .45rem .7rem;
+	border: 1px solid $line;
+	border-radius: 999px;
+	background: rgba($white, .45);
+	color: $navy-soft;
+	font-size: .76rem;
+	font-weight: 750;
+}
+
+.dashboard {
+	@include card;
+
+	position: relative;
+	min-height: 25rem;
+	padding: 1rem;
+	overflow: hidden;
+	background: $navy;
+	color: $warm-cream;
+	box-shadow: $shadow-lg;
+}
+
+.dashboard__bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: .6rem .75rem 1rem;
+	border-bottom: 1px solid $line-light;
+	font-size: .72rem;
+	font-weight: 800;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+}
+
+.dashboard__dots { display: flex; gap: .35rem; }
+.dashboard__dots i { width: .5rem; height: .5rem; border-radius: 50%; background: $warm-cream; }
+.dashboard__dots i:nth-child(2) { opacity: .65; }
+.dashboard__dots i:nth-child(3) { opacity: .35; }
+
+.dashboard__grid {
+	display: grid;
+	grid-template-columns: 1.2fr .8fr;
+	gap: .75rem;
+	padding-top: .75rem;
+}
+
+.dashboard__panel {
+	min-height: 9rem;
+	padding: 1rem;
+	border: 1px solid $line-light;
+	border-radius: .85rem;
+	background: rgba($warm-cream, .06);
+}
+
+.dashboard__panel--wide { grid-row: span 2; }
+.dashboard__panel small { color: rgba($warm-cream, .62); }
+.dashboard__panel strong { display: block; margin-top: .6rem; font-size: 2rem; }
+
+.bar-chart {
+	display: flex;
+	height: 9rem;
+	align-items: end;
+	gap: .45rem;
+	margin-top: 1rem;
+}
+
+.bar-chart i {
+	flex: 1;
+	min-width: .55rem;
+	border-radius: .35rem .35rem 0 0;
+	background: rgba($warm-cream, .66);
+	transform-origin: bottom;
+}
+
+.bar-chart i:nth-child(1) { height: 38%; opacity: .45; }
+.bar-chart i:nth-child(2) { height: 55%; opacity: .6; }
+.bar-chart i:nth-child(3) { height: 48%; opacity: .7; }
+.bar-chart i:nth-child(4) { height: 76%; opacity: .82; }
+.bar-chart i:nth-child(5) { height: 88%; background: $warm-cream; }
+
+.process-list,
+.timeline {
+	display: grid;
+	gap: 1px;
+	padding: 0;
+	margin: 0;
+	border: 1px solid $line;
+	border-radius: $radius;
+	overflow: hidden;
+	background: $line;
+	list-style: none;
+}
+
+.process-list li,
+.timeline__item {
+	display: grid;
+	grid-template-columns: 5rem 1fr minmax(10rem, .55fr);
+	gap: 1.5rem;
+	align-items: center;
+	padding: 1.5rem;
+	background: $cool-white;
+}
+
+.process-list strong,
+.timeline__index { color: $navy; font-size: 1.2rem; }
+
+.faq-list { border-top: 1px solid $line; }
+
+.faq-list details { border-bottom: 1px solid $line; }
+
+.faq-list summary {
+	display: flex;
+	justify-content: space-between;
+	gap: 2rem;
+	padding: 1.35rem 0;
+	font-size: 1.15rem;
+	font-weight: 800;
+	cursor: pointer;
+	list-style: none;
+}
+
+.faq-list summary::after {
+	color: $navy;
+	content: "+";
+	font-size: 1.5rem;
+}
+
+.faq-list details[open] summary::after { content: "−"; }
+.faq-list details p { max-width: 48rem; padding-bottom: 1.35rem; color: $navy-soft; }
+
+.faq-layout { display: grid; grid-template-columns: .6fr 1.4fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+.accordion { border-top: 1px solid $line; }
+.accordion__item { border-bottom: 1px solid $line; }
+.accordion__item h3 { margin: 0; }
+.accordion__item button { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 2rem; padding: 1.35rem 0; border: 0; background: transparent; color: $navy; font-weight: 800; text-align: left; cursor: pointer; }
+.accordion__item button i { display: grid; width: 2rem; height: 2rem; flex: 0 0 auto; place-items: center; border: 1px solid $line; border-radius: 50%; background: $warm-cream; color: $navy; font-size: 1.3rem; font-style: normal; transition: transform $transition, background $transition; }
+.accordion__item button[aria-expanded="true"] i { background: $navy; color: $warm-cream; transform: rotate(45deg); }
+.accordion__panel { padding: 0 3.5rem 1.35rem 0; color: $navy-soft; }
+.accordion__panel p { margin: 0; }
+
+.destination-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.destination-grid a { text-decoration: none; }
+.destination-grid a > i { color: $navy; font-size: 1.5rem; font-style: normal; transition: transform $transition; }
+.destination-grid a:hover > i { transform: translateX(.35rem); }
+
+@media (max-width: 900px) {
+	.card-grid,
+	.feature-grid,
+	.project-grid,
+	.metric-grid,
+	.bento-grid,
+	.channel-grid,
+	.resource-grid,
+	.destination-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.faq-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+	.card-grid,
+	.feature-grid,
+	.project-grid,
+	.metric-grid,
+	.bento-grid,
+	.channel-grid,
+	.resource-grid,
+	.destination-grid,
+	.dashboard__grid { grid-template-columns: 1fr; }
+	.dashboard__panel--wide { grid-row: auto; }
+
+	.process-list li,
+	.timeline__item { grid-template-columns: 3rem 1fr; }
+
+	.process-list li > :last-child,
+	.timeline__item > :last-child { grid-column: 2; }
+}

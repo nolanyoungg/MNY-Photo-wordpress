@@ -1,0 +1,51 @@
+@use 'variables' as *;
+
+@mixin content-wrap {
+	width: min(calc(100% - clamp(2rem, 6vw, 6rem)), $wide);
+	margin-inline: auto;
+}
+
+@mixin focus-ring {
+	outline: 3px solid $royal-blue;
+	outline-offset: 3px;
+	box-shadow: 0 0 0 6px $warm-cream;
+}
+
+@mixin card {
+	border: 1px solid $line;
+	border-radius: $radius;
+	background: rgba($warm-cream, .72);
+	box-shadow: $shadow-sm;
+}
+
+@mixin interactive-card {
+	transition: transform $transition, border-color $transition, background-color $transition, box-shadow $transition;
+
+	&:hover,
+	&:focus-within {
+		border-color: $line-strong;
+		background: $warm-cream;
+		box-shadow: $shadow-md;
+		transform: translateY(-.25rem);
+	}
+}
+
+@mixin interface-frame {
+	border: 1px solid $line;
+	border-radius: $radius-lg;
+	background:
+		linear-gradient(rgba($navy, .035) 1px, transparent 1px),
+		linear-gradient(90deg, rgba($navy, .035) 1px, transparent 1px),
+		$warm-cream;
+	background-size: 2rem 2rem;
+	box-shadow: $shadow-md;
+}
+
+@mixin overline {
+	color: $navy-muted;
+	font-size: .7rem;
+	font-weight: 800;
+	letter-spacing: .14em;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
