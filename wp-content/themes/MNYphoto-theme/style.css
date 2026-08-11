@@ -1,0 +1,17 @@
+/*
+Theme Name: MNY Photo
+Theme URI: https://shibey.com/
+Author: Nolan Young
+Author URI: https://shibey.com/
+Description: A cinematic, editorial photography theme for independent studios and visual storytellers.
+Requires at least: 6.7
+Tested up to: 7.0
+Requires PHP: 7.2
+Version: 2.0.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mnyphoto-theme
+Tags: photography, portfolio, blog, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, wide-blocks
+*/
+
+/* Runtime styles are compiled from src/scss/main.scss to dist/css/bundle.css. */

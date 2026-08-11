@@ -1,0 +1,1 @@
+<section class="about-image section-pad"><div class="wrap"><figure><?php echo mnyphoto_image( 'cards-overhead.webp', __( 'Hands in play around a shared table.', 'mnyphoto-theme' ) ); ?><figcaption><?php esc_html_e( 'Observation before orchestration.', 'mnyphoto-theme' ); ?></figcaption></figure></div></section>

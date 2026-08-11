@@ -1,0 +1,3 @@
+<section class="page-hero page-hero--split">
+	<div class="wrap page-hero__grid"><div><p class="eyebrow"><?php esc_html_e( 'Services', 'mnyphoto-theme' ); ?></p><h1><?php esc_html_e( 'A complete image practice, built around the assignment.', 'mnyphoto-theme' ); ?></h1><p><?php esc_html_e( 'Choose a focused commission or connect strategy, production, photography, and finishing into one coherent system.', 'mnyphoto-theme' ); ?></p></div><figure><?php echo mnyphoto_image( 'editorial-arcade.webp', __( 'People walking through a columned arcade in Florence.', 'mnyphoto-theme' ), '', 'eager', 'high' ); ?><figcaption><?php esc_html_e( 'Editorial observation · Florence', 'mnyphoto-theme' ); ?></figcaption></figure></div>
+</section>

@@ -1,0 +1,1 @@
+<article <?php post_class( 'single-entry wrap' ); ?>><div class="single-entry__content entry-content"><?php the_content(); wp_link_pages(); ?></div><footer><?php the_tags( '<p class="post-tags">', ' ', '</p>' ); ?></footer></article><?php if ( comments_open() || get_comments_number() ) : ?><div class="wrap"><?php comments_template(); ?></div><?php endif; ?>
