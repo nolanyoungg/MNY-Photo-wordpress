@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="Demand signal analytics chart">
+  <rect width="960" height="600" rx="40" fill="#062653"/>
+  <rect x="36" y="36" width="888" height="528" rx="28" fill="#FAF3E0"/>
+  <g stroke="#062653" stroke-width="2" opacity=".1">
+    <path d="M92 154h776M92 250h776M92 346h776M92 442h776"/>
+    <path d="M220 108v384M360 108v384M500 108v384M640 108v384M780 108v384"/>
+  </g>
+  <path d="M92 434c75-18 114-8 170-71 56-64 104-18 163-73 68-64 114 4 178-56 52-49 103-20 165-72 43-37 72-24 100-42" fill="none" stroke="#062653" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+  <circle cx="868" cy="120" r="14" fill="#FF6B35"/>
+  <rect x="92" y="510" width="220" height="18" rx="9" fill="#062653" opacity=".18"/>
+</svg>

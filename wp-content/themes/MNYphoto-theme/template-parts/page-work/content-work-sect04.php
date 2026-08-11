@@ -1,1 +1,29 @@
-<section class="portfolio-chapter portfolio-chapter--reverse section-pad section-dark"><div class="wrap portfolio-chapter__grid"><figure class="portfolio-frame portfolio-frame--panoramic"><?php echo mnyphoto_image( 'crowd-at-sunset.webp', __( 'A crowd gathered beneath a warm sunset.', 'mnyphoto-theme' ) ); ?><figcaption><strong><?php esc_html_e( 'Last light', 'mnyphoto-theme' ); ?></strong><span><?php esc_html_e( 'Event atmosphere', 'mnyphoto-theme' ); ?></span></figcaption></figure><div class="portfolio-copy"><span>04</span><h2><?php esc_html_e( 'The room, the crowd, the one raised camera.', 'mnyphoto-theme' ); ?></h2><p><?php esc_html_e( 'Event coverage needs the establishing view and the human detail that makes it memorable.', 'mnyphoto-theme' ); ?></p></div></div></section>
+<?php
+/**
+ * Work testimonial.
+ *
+ * @package NolanYoungThemeTemplate99Master
+ */
+
+defined( 'ABSPATH' ) || exit;
+?>
+<section class="section section--cream">
+	<div class="content-wrap">
+		<figure class="testimonial" data-reveal>
+			<div class="testimonial__context">
+				<span><?php esc_html_e( 'Client perspective', 'nolan-young-theme-template-99-master' ); ?></span>
+				<strong><?php esc_html_e( 'Meridian operating platform', 'nolan-young-theme-template-99-master' ); ?></strong>
+				<small><?php esc_html_e( 'Strategy · Experience · Engineering', 'nolan-young-theme-template-99-master' ); ?></small>
+			</div>
+			<div class="testimonial__mark" aria-hidden="true">“</div>
+			<blockquote>
+				<p><?php esc_html_e( 'They gave our teams a shared language, then turned it into a product customers understood immediately. The work was as rigorous behind the scenes as it was polished on launch day.', 'nolan-young-theme-template-99-master' ); ?></p>
+			</blockquote>
+			<figcaption>
+				<span class="avatar-placeholder" aria-hidden="true">AM</span>
+				<span><strong><?php esc_html_e( 'Avery Morgan', 'nolan-young-theme-template-99-master' ); ?></strong><?php esc_html_e( 'Chief Experience Officer, Meridian', 'nolan-young-theme-template-99-master' ); ?></span>
+				<span class="status-pill"><?php esc_html_e( 'Fictional testimonial', 'nolan-young-theme-template-99-master' ); ?></span>
+			</figcaption>
+		</figure>
+	</div>
+</section>

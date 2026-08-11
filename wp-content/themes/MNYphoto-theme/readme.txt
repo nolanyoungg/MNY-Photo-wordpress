@@ -1,28 +1,27 @@
-=== MNY Photo ===
-Contributors: nolanyoung
-Requires at least: 6.7
-Tested up to: 7.0
-Requires PHP: 7.2
-Stable tag: 2.0.0
-License: GPLv2 or later
+=== Nolan Young Studio 99 ===
+Contributors: nolan-young
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Requires at least: 6.3
+Tested up to: 6.8
+Requires PHP: 7.4
+Stable tag: 1.0.0
+License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A premium editorial photography theme for portraits, commercial work, events, stories, and creative direction.
+An accessible, classic WordPress theme for a fictional digital studio.
 
 == Installation ==
-1. Upload the MNYphoto-theme directory or packaged ZIP through Appearance > Themes.
-2. Activate MNY Photo.
-3. Create and assign the included custom page templates.
-4. Set a static front page and posts page under Settings > Reading.
-5. Assign Primary and Footer navigation menus.
-6. Configure studio details in the Customizer.
 
-== Important form note ==
-Enquiry and newsletter forms are visual integration points. They do not send or store data. Connect a reputable WordPress form plugin before accepting submissions.
+1. Upload the complete theme folder to `wp-content/themes/`, or upload the generated ZIP through Appearance > Themes.
+2. Activate Nolan Young Studio 99.
+3. Assign Primary navigation and Footer navigation under Appearance > Menus.
+4. Create pages and assign the supplied custom page templates where appropriate.
+5. Replace all fictional placeholder content and contact details before production use.
 
-== Photography ==
-All bundled photographs are locally stored, optimized derivatives from the WordPress Photo Directory under CC0. Complete provenance is in dist/img/ATTRIBUTION.md.
+== Development ==
 
-== Changelog ==
-= 2.0.0 =
-* Complete production theme implementation with responsive templates, rich navigation, portfolio, journal, accessibility, build tooling, and packaging.
+Run the documented npm commands from the theme root: `npm run dev`, `npm run lint:php`, `npm run build`, and `npm run package`.
+
+== Accessibility ==
+
+The theme includes a skip link, semantic landmarks, keyboard-operable navigation, visible focus styles, responsive layouts, and reduced-motion fallbacks. Site editors remain responsible for accessible page content, including meaningful image alternative text.
