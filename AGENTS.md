@@ -34,16 +34,8 @@ The theme README describes an `src/` build tree and npm commands, but this check
 
 ## Validation
 
-Run the strongest checks available for the files changed. At minimum, inspect the final diff and run:
+you should use the live address when pushing changes to production, the URL site only, be sure to clear cookies etc. 
 
-```text
-git diff --check
-git status --short
-```
-
-For changed PHP files, run `php -l path/to/file.php` when PHP is available. If the package manifest and source tree are present, follow the theme README's npm workflow and run the relevant `npm run test`, `npm run build`, and `npm run package` checks. Do not claim those checks passed when the required tooling is absent.
-
-For front-end or template changes, verify the affected page in WordPress when an installation is available. Recheck keyboard operation, visible focus, reduced-motion behavior, 200% zoom, 320px reflow, image alt text, and the `#content` landmark for relevant changes.
 
 ## Nested instructions
 

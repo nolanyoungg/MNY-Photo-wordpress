@@ -3,15 +3,18 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "npm run build && concurrently --kill-others \"sass --watch src/scss/main.scss:dist/css/bundle.css --style=expanded\" \"esbuild ./src/js/main.js --bundle --outfile=dist/js/bundle.js --watch\"",
-    "build": "sass src/scss/main.scss dist/css/bundle.css --style=compressed --no-source-map && esbuild ./src/js/main.js --bundle --minify --outfile=dist/js/bundle.js && node build/validate.js",
+    "dev": "webpack --config build/webpack.config.js --mode development --watch",
+    "build": "webpack --config build/webpack.config.js --mode production && node build/validate.js",
     "lint:php": "node build/lint-php.js",
     "package": "node build/package-theme.js --preflight && npm run build && node build/package-theme.js"
   },
   "devDependencies": {
     "archiver": "^8.0.0",
-    "concurrently": "^9.1.2",
-    "esbuild": "^0.25.0",
-    "sass": "^1.86.0"
+    "css-loader": "^7.1.2",
+    "mini-css-extract-plugin": "^2.9.2",
+    "sass": "^1.86.0",
+    "sass-loader": "^16.0.5",
+    "webpack": "5.100.2",
+    "webpack-cli": "^6.0.1"
   }
 }
