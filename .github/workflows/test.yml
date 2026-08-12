@@ -12,6 +12,7 @@ jobs:
   test:
     name: Lint theme PHP
     runs-on: ubuntu-latest
+
     defaults:
       run:
         working-directory: wp-content/themes/MNYphoto
@@ -23,7 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
           cache-dependency-path: wp-content/themes/MNYphoto/package-lock.json
 
