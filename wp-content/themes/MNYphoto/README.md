@@ -189,7 +189,7 @@ There is currently no `npm test` script in `package.json`. The supported automat
 
 MNYphoto-theme is licensed under the GNU General Public License, version 2.0 or later. See [LICENSE](https://www.gnu.org/licenses/gpl-2.0.html).
 
-## Build files
+## BUILD FILE
 
 The files in `build/` are small Node.js tools that handle different parts of the theme workflow. They are intentionally separate so that compiling assets, checking theme structure, checking PHP syntax, and creating a release archive can fail independently and report the relevant problem.
 
@@ -203,6 +203,17 @@ npm run package   -> package-theme.js --preflight -> npm run build -> package-th
 ```
 
 There is no `npm test` script. `build/test-theme.js` can be run directly, but it is not part of the current `npm run build`, `npm run lint:php`, or `npm run package` commands.
+
+The descriptions below are based on the executable files currently in `build/`:
+
+- `build/webpack.config.js`
+- `build/validate.js`
+- `build/lint-php.js`
+- `build/package-theme.js`
+- `build/test-theme.js`
+- `build/README.md`, which documents this directory and is not an executable build step
+
+The npm command definitions are in [`package.json`](package.json#L5-L18). The build scripts resolve the theme root from their own directory with `__dirname`, so these commands are intended to run from the theme root containing `package.json` and `build/`.
 
 ### `build/webpack.config.js`
 
@@ -221,6 +232,10 @@ It does the following:
 
 This file only builds front-end assets. It does not run PHP, inspect WordPress, create a ZIP, or deploy the theme.
 
+The exact configuration uses `src/js/main.js` as its only entry point at [`build/webpack.config.js`](build/webpack.config.js#L8-L10), writes JavaScript beneath `dist/` at [`build/webpack.config.js`](build/webpack.config.js#L11-L17), and extracts CSS to `dist/css/bundle.css` at [`build/webpack.config.js`](build/webpack.config.js#L42-L44). The SCSS rule is `/\.s[ac]ss$/i` and uses `sass-loader`, `css-loader`, and `MiniCssExtractPlugin.loader` at [`build/webpack.config.js`](build/webpack.config.js#L18-L41).
+
+`main.js` imports `../scss/main.scss` at [`src/js/main.js`](src/js/main.js#L1), which makes Sass part of the same Webpack dependency graph as the JavaScript. The configuration does not define a separate CSS entry point. Production mode requests compressed Sass output and Webpack minimization at [`build/webpack.config.js`](build/webpack.config.js#L29-L47); production source maps are disabled at [`build/webpack.config.js`](build/webpack.config.js#L48).
+
 ### `build/validate.js`
 
 This is the theme structure validator called after the production Webpack build.
@@ -238,6 +253,8 @@ If a required file is missing, a template part is misplaced, a filename is inval
 
 This is a filesystem and naming check. It does not boot WordPress, execute PHP, test browser behavior, validate HTML/CSS quality, or confirm that an editor has configured the site correctly.
 
+The exact required runtime list is declared in [`build/validate.js`](build/validate.js#L4-L9). The required template inventory is constructed from the `pageParts` and `pagePrefixes` objects at [`build/validate.js`](build/validate.js#L11-L35). Every PHP file under `template-parts/` is recursively checked against the lowercase `page-*/content-*.php` pattern at [`build/validate.js`](build/validate.js#L64-L70), while each PHP file directly under `page-templates/` must contain the literal `Template Name:` string at [`build/validate.js`](build/validate.js#L72-L77).
+
 ### `build/lint-php.js`
 
 This is the PHP syntax checker used by `npm run lint:php`. Despite the command name, it is a syntax lint rather than a full WordPress coding-standard linter.
@@ -252,6 +269,8 @@ It works as follows:
 - If any file returns a non-zero status, the script exits with status `1`, which lets CI or another calling process fail. If every file passes, it reports the number of files validated.
 
 This script catches parse errors such as missing semicolons, unmatched braces, and malformed PHP syntax. It does not execute WordPress, load plugins, query a database, inspect runtime output, or enforce WordPress Coding Standards, PHPStan rules, security rules, or accessibility rules.
+
+The script resolves PHP in this order: a valid `PHP_BINARY` environment variable, `php` on `PATH`, then standard Local runtime locations. The resolution logic is in [`build/lint-php.js`](build/lint-php.js#L86-L113), with platform-specific Local candidates in [`build/lint-php.js`](build/lint-php.js#L34-L83). It recursively collects `.php` files while excluding `node_modules` and `vendor` at [`build/lint-php.js`](build/lint-php.js#L116-L127), then runs `[ '-l', file ]` for each file at [`build/lint-php.js`](build/lint-php.js#L130-L145). A failed PHP process sets the script's exit code to `1` at [`build/lint-php.js`](build/lint-php.js#L148-L152).
 
 ### `build/package-theme.js`
 
@@ -272,6 +291,10 @@ The package intentionally excludes development-only material such as `src/`, `bu
 
 The `package` npm script runs the complete release sequence: preflight the destination, run `npm run build` to generate and validate fresh assets, then run this script again to create and validate the ZIP.
 
+The fixed ZIP destination and archive slug are defined at [`build/package-theme.js`](build/package-theme.js#L7-L10), producing `wp-content/zipped-theme/MNYphoto-theme.zip` with an internal `MNYphoto-theme/` root. The complete runtime allowlist is the `runtimeEntries` array at [`build/package-theme.js`](build/package-theme.js#L12-L18); the package script does not read `.gitignore` or `.deployignore`.
+
+Packaging writes a `.partial` archive, reads its ZIP directory, and compares invalid roots, missing entries, and extra entries before renaming the validated file. Those behaviors are implemented at [`build/package-theme.js`](build/package-theme.js#L45-L94) and [`build/package-theme.js`](build/package-theme.js#L110-L148). The `--preflight` mode only verifies that the destination exists or can be created and is writable; it exits before checking runtime entries or creating an archive at [`build/package-theme.js`](build/package-theme.js#L20-L30) and [`build/package-theme.js`](build/package-theme.js#L96-L101).
+
 ### `build/test-theme.js`
 
 This is a standalone lightweight sanity-check script. It is not currently connected to an npm script and is not invoked by `npm run build`.
@@ -283,3 +306,11 @@ When run directly with `node build/test-theme.js`, it:
 - Prints `Production checks passed.` if those limited checks succeed.
 
 It does not run PHP, boot WordPress, inspect nested `page-*` template-part directories, verify the complete template inventory, build assets, lint PHP, or create a ZIP. The more complete structure checks are performed by `build/validate.js`, which is the validator used by the production build.
+
+The entire implementation is one line at [`build/test-theme.js`](build/test-theme.js#L1): it reads `functions.php` and checks for the text `setup.php`, `enqueue.php`, and `customizer.php`; it examines only the immediate entries returned by `readdirSync(root/template-parts)`; and it prints `Production checks passed.` when those narrow checks succeed. Because no npm script references this file in [`package.json`](package.json#L5-L9), it runs only when invoked directly with `node build/test-theme.js`.
+
+### `build/README.md`
+
+This is documentation, not a Node.js executable. It explains the current build scripts, source graphs, generated outputs, PHP and archive boundaries, WordPress enqueue integration, and GitHub Actions workflow. It does not participate in `npm run dev`, `npm run build`, `npm run lint:php`, or `npm run package`.
+
+The package allowlist in [`build/package-theme.js`](build/package-theme.js#L12-L18) excludes the entire `build/` directory, so this documentation file is not placed in the installable theme ZIP. The root `.deployignore` also excludes the build directory from live deployment at [`.deployignore`](../../../.deployignore#L1-L4).
