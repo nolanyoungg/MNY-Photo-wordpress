@@ -4,6 +4,8 @@ MNYphoto-theme is a custom classic WordPress theme for a studio-style digital ag
 
 The current theme contains demonstration and placeholder content. Replace the copy, contact details, project information, and media before using it for a production site.
 
+Theme is looking good. 8-26
+
 ## What the theme provides
 
 - A classic PHP theme structure built from WordPress templates and organized template parts.
