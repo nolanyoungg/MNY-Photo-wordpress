@@ -4,9 +4,6 @@ import '../scss/main.scss';
 
 
 
-
-
-
 import { initAccordions } from './components/accordion';
 
 import { initArticleContents, initCopyArticleLink } from './components/article-contents';
