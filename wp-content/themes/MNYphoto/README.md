@@ -1,20 +1,34 @@
 # MNYphoto WordPress Theme
 
-MNYphoto-theme is a custom classic WordPress theme for a studio-style digital agency site. It combines server-rendered WordPress templates with a small, component-based front-end layer for navigation, content interactions, filtering, and progressive enhancement.
+MNYphoto-theme is a custom classic WordPress theme for a photography site. It combines server-rendered WordPress templates with a small, component-based front-end layer for navigation, content interactions, filtering, and progressive enhancement.
 
-The current theme contains demonstration and placeholder content. Replace the copy, contact details, project information, and media before using it for a production site.
+The theme implements the approved Concept 03 photography design. Its six bundled photographs are AI-generated illustrations, identified on the public portfolio and footer until replaced with Media Library images. Existing WordPress pages, posts, and content are retained.
 
-Theme is looking good. 8-26
+## Approved photography design
+
+The homepage uses a four-panel moving photo gallery, a transparent header, and the charcoal/white/gray palette from `docs/photography-concept-03.html`. Two panels appear on tablets and one on phones. Only Services and Blog have dropdowns. About and Portfolio are direct links; the existing Work page/template filename and URL are preserved.
+
+The six categories are Pets, Portraits, Family, Homes & real estate, Events, and Landscapes. Portraits include college graduation, high school seniors, kids, and individual/self-portrait sessions. In **Appearance > Customize > Photography collections**, choose a Media Library image for each category. Core responsive attachment markup is used; bundled WebP derivatives provide the illustrated defaults.
+
+Gallery controls support pause/play, direct collection selection, previous/next, touch swipes, keyboard access, and reduced motion. Menus, modal dialogs, hidden tabs, and offscreen/hover/focus states pause autoplay. The gallery has usable static links without JavaScript. Portfolio filtering supports real URLs and browser history.
+
+Page entry files include sections from `template-parts/page-*`. Existing required filenames are retained, including compatibility parts for the new shared sections; top-level templates determine which sections render. New shared parts use `page-shared/content-shared-*.php`. The structure validator checks the full inventory, references, and the new `inc/photography.php` module.
+
+`dist/` and `build/` remain in place. Edit the active styles in `src/scss/base/globalelements.scss`, `layout/header.scss`, `layout/footer.scss`, `pages/photography.scss`, `pages/front-page.scss`, and `components/wordpress.scss`. The active JavaScript components are site navigation, home experience, photography gallery, and photography details. Existing unused modules are retained for compatibility; the entry point defines the active build.
+
+Blog cards, archives, single posts, search, comments, and pagination use actual WordPress content. No sample posts are inserted. Custom page bodies remain available below the photography composition. The inquiry form keeps the existing nonce/honeypot/wp_mail path, now collecting one of the six categories, preferred date, location, name, email, and message. The handler validates category and date on the server. It does not create database entries.
+
+The user-approved release workflow is local lint/build/package validation, production-branch push, then Google Chrome verification on the actual staging URL. The older sandbox-only instructions do not govern this approved rollout. The site must activate the deployed `MNYphoto` folder; a separate older `MNYphoto-theme` installation can remain as a rollback option.
 
 ## What the theme provides
 
 - A classic PHP theme structure built from WordPress templates and organized template parts.
 - Theme support for document titles, featured images, custom logos, HTML5 markup, responsive embeds, wide alignment, automatic feeds, and custom menus.
 - Primary and Footer navigation locations, plus a Blog sidebar widget area.
-- Custom page templates for About Us, Services, Work, Contact Us, PPC Landing Page 2026, and Privacy Policy pages.
+- Custom page templates for About Us, Services, Portfolio, Contact Us, Portrait Campaign, and Privacy Policy pages.
 - Server-side fallback routes for the showcase pages and journal when a clean installation has not yet created matching published Pages.
-- A responsive header with a native WordPress menu, an enhanced Services/About/Work/Blog navigation experience, mobile navigation, and a no-JavaScript fallback.
-- A project brief form that uses a WordPress nonce, sanitizes submitted values, validates required fields, rejects submissions that populate the honeypot field, and sends valid submissions to the site administrator through `wp_mail()`.
+- A responsive header with a native WordPress menu, an enhanced Services/Blog dropdown navigation experience, mobile navigation, and a no-JavaScript fallback.
+- A photography inquiry form that uses a WordPress nonce, sanitizes submitted values, validates required fields, rejects submissions that populate the honeypot field, and sends valid submissions to the site administrator through `wp_mail()`.
 - Accessibility-oriented behavior including a skip link, semantic landmarks, labeled controls, visible focus states, keyboard-aware navigation, focus management, and reduced-motion handling. These features do not replace accessible content and editorial practices.
 
 ## Theme structure
@@ -40,7 +54,7 @@ MNYphoto/
 └── package-lock.json         # Locked npm dependency tree
 ```
 
-The theme's PHP functions currently use the `nytt99_` prefix to avoid collisions with WordPress, plugins, and other themes. The prefix is an internal implementation detail and does not change the theme's public display name.
+Legacy theme PHP functions use the `nytt99_` prefix; new photography helpers use `mnyphoto_`. Both avoid collisions with WordPress, plugins, and other themes. The prefix is an internal implementation detail and does not change the theme's public display name.
 
 ## WordPress installation
 
@@ -51,11 +65,11 @@ The theme's PHP functions currently use the `nytt99_` prefix to avoid collisions
 5. Create the site pages and assign the supplied templates where needed:
    - About Us
    - Services
-   - Work
+   - Portfolio (existing Work page)
    - Contact Us
-   - PPC Landing Page 2026
+   - Portrait Campaign (existing PPC page)
    - Privacy Policy
-6. Configure the site administrator email address. The project brief form sends mail to WordPress's `admin_email` option.
+6. Configure the site administrator email address. The photography inquiry form sends mail to WordPress's `admin_email` option.
 7. Replace the demonstration copy, links, contact details, project data, and placeholder media before launch.
 
 The theme can render several showcase destinations before corresponding Pages exist. Published Pages take precedence when they are created. The supported fallback destinations are `/services/`, `/about-us/`, `/work/`, `/contact-us/`, `/ppc-lp-2026/`, `/journal/`, and `/blog/`.
@@ -67,7 +81,7 @@ The source entry points are:
 - `src/js/main.js` — JavaScript entry point and component initialization.
 - `src/scss/main.scss` — Sass entry point that imports the theme's variables, mixins, base styles, layouts, components, and page styles.
 
-The JavaScript entry point initializes the current interactive modules:
+The old component files remain available in source. The photography entry point initializes only navigation, the gallery, the photo viewer/filter, and service focus handling. Earlier modules included:
 
 - Site navigation and mega-menu behavior.
 - Accordions and tabs.
@@ -115,7 +129,7 @@ Production builds compile compressed CSS, enable Webpack's production JavaScript
 - `template-tags.php` contains reusable template output helpers.
 - `customizer.php` registers theme customizer behavior.
 - `navigation.php` renders the enhanced navigation panels, native menu, dynamic blog cards, and safe fallback menu.
-- `contact.php` handles the project brief form submission.
+- `contact.php` handles the photography inquiry form submission.
 
 Most page markup is kept in `template-parts/page-*` directories. This keeps the top-level templates small and lets each page section be edited independently. The structure validator checks that those parts use the expected page directory and `content-*.php` naming convention.
 

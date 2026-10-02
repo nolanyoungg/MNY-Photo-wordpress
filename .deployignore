@@ -14,3 +14,7 @@ wp-content/themes/MNYphoto/eslint.config.cjs
 
 # Do not deploy CSS source maps
 wp-content/themes/MNYphoto/dist/**/*.map
+# Design review artifacts and local packages stay in Git, not the public site
+docs/
+wp-content/zipped-theme/
+wp-content/themes/*.zip

@@ -1,19 +1,14 @@
 <?php
-/**
- * Template Name: PPC Landing Page 2026
- *
- * @package NolanYoungThemeTemplate99Master
- */
-
+/** Template Name: Portrait Campaign
+ * Template Post Type: page
+ * @package MNYphoto */
+defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
-<main id="content">
-	<?php get_template_part( 'template-parts/page-ppc-lp-2026/content', 'ppc-lp-2026-hero' ); ?>
-	<?php get_template_part( 'template-parts/page-ppc-lp-2026/content', 'ppc-lp-2026-sect01' ); ?>
-	<?php get_template_part( 'template-parts/page-ppc-lp-2026/content', 'ppc-lp-2026-sect02' ); ?>
-	<?php get_template_part( 'template-parts/page-ppc-lp-2026/content', 'ppc-lp-2026-sect03' ); ?>
-	<?php get_template_part( 'template-parts/page-ppc-lp-2026/content', 'ppc-lp-2026-sect04' ); ?>
-	<?php get_template_part( 'template-parts/page-ppc-lp-2026/content', 'ppc-lp-2026-sect05' ); ?>
-	<?php get_template_part( 'template-parts/page-ppc-lp-2026/content', 'ppc-lp-2026-cta' ); ?>
+<main id="content" tabindex="-1">
+<?php get_template_part( 'template-parts/page-ppc-lp-2026/content', 'ppc-lp-2026-hero' ); ?>
+<?php get_template_part( 'template-parts/page-ppc-lp-2026/content', 'ppc-lp-2026-sect01' ); ?>
+<?php get_template_part( 'template-parts/page-ppc-lp-2026/content', 'ppc-lp-2026-sect02' ); ?>
+<?php mnyphoto_editor_content(); ?>
 </main>
-<?php get_footer();
+<?php get_footer(); ?>

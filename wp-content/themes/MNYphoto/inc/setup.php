@@ -8,7 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 
 function nytt99_setup() {
-	load_theme_textdomain( 'nolan-young-theme-template-99-master', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'mnyphoto-theme', get_template_directory() . '/languages' );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'automatic-feed-links' );
@@ -26,8 +26,8 @@ function nytt99_setup() {
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' ) );
 	register_nav_menus(
 		array(
-			'primary' => __( 'Primary navigation', 'nolan-young-theme-template-99-master' ),
-			'footer'  => __( 'Footer navigation', 'nolan-young-theme-template-99-master' ),
+			'primary' => __( 'Primary navigation', 'mnyphoto-theme' ),
+			'footer'  => __( 'Footer navigation', 'mnyphoto-theme' ),
 		)
 	);
 }
@@ -36,7 +36,7 @@ add_action( 'after_setup_theme', 'nytt99_setup' );
 function nytt99_register_sidebar() {
 	register_sidebar(
 		array(
-			'name'          => __( 'Blog sidebar', 'nolan-young-theme-template-99-master' ),
+			'name'          => __( 'Blog sidebar', 'mnyphoto-theme' ),
 			'id'            => 'sidebar-1',
 			'before_widget' => '<section class="widget">',
 			'after_widget'  => '</section>',
@@ -103,7 +103,7 @@ function nytt99_services_fallback_title( $title ) {
 	if ( ! empty( $GLOBALS['nytt99_virtual_services_request'] ) || nytt99_is_virtual_services_request() ) {
 		return sprintf(
 			/* translators: %s is the site name. */
-			__( 'Services – %s', 'nolan-young-theme-template-99-master' ),
+			__( 'Services – %s', 'mnyphoto-theme' ),
 			get_bloginfo( 'name' )
 		);
 	}
@@ -190,12 +190,12 @@ function nytt99_showcase_fallback_title( $title ) {
 
 	$route = $GLOBALS['nytt99_virtual_showcase_route'];
 	$names = array(
-		'about-us'    => __( 'About Us', 'nolan-young-theme-template-99-master' ),
-		'work'        => __( 'Work', 'nolan-young-theme-template-99-master' ),
-		'contact-us'  => __( 'Contact Us', 'nolan-young-theme-template-99-master' ),
-		'ppc-lp-2026' => __( 'PPC Landing Page', 'nolan-young-theme-template-99-master' ),
-		'journal'     => __( 'Journal', 'nolan-young-theme-template-99-master' ),
-		'blog'        => __( 'Journal', 'nolan-young-theme-template-99-master' ),
+		'about-us'    => __( 'About Us', 'mnyphoto-theme' ),
+		'work'        => __( 'Portfolio', 'mnyphoto-theme' ),
+		'contact-us'  => __( 'Contact Us', 'mnyphoto-theme' ),
+		'ppc-lp-2026' => __( 'PPC Landing Page', 'mnyphoto-theme' ),
+		'journal'     => __( 'Blog', 'mnyphoto-theme' ),
+		'blog'        => __( 'Blog', 'mnyphoto-theme' ),
 	);
 
 	if ( isset( $names[ $route ] ) ) {

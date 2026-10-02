@@ -1,9 +1,11 @@
 <?php
+/** @package MNYphoto */
+defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
-<main id="content">
-	<?php get_template_part( 'template-parts/page-blog/content', 'blog-hero' ); ?>
-	<?php get_template_part( 'template-parts/page-blog/content', 'blog-page-grid' ); ?>
-	<?php get_template_part( 'template-parts/page-blog/content', 'blog-cta-bottom' ); ?>
+<main id="content" tabindex="-1">
+<?php get_template_part( 'template-parts/page-blog/content', 'blog-hero' ); ?>
+<?php get_template_part( 'template-parts/page-blog/content', 'blog-featured' ); ?>
+<?php get_template_part( 'template-parts/page-blog/content', 'blog-page-grid' ); ?>
 </main>
-<?php get_footer();
+<?php get_footer(); ?>

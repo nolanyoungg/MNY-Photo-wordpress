@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 function nytt99_handle_project_brief() {
 	check_admin_referer( 'nytt99_project_brief', 'nytt99_project_brief_nonce' );
 
-	$redirect = nytt99_page_url( 'contact-us' ) . '#project-brief';
+	$redirect = mnyphoto_url( 'contact' ) . '#project-brief';
 	$website  = isset( $_POST['project_website'] ) ? sanitize_text_field( wp_unslash( $_POST['project_website'] ) ) : '';
 
 	if ( $website ) {
@@ -27,26 +27,31 @@ function nytt99_handle_project_brief() {
 	$email      = isset( $_POST['project_email'] ) ? sanitize_email( wp_unslash( $_POST['project_email'] ) ) : '';
 	$context    = isset( $_POST['project_context'] ) ? sanitize_textarea_field( wp_unslash( $_POST['project_context'] ) ) : '';
 	$timing     = isset( $_POST['project_timing'] ) ? sanitize_text_field( wp_unslash( $_POST['project_timing'] ) ) : '';
-	$investment = isset( $_POST['project_investment'] ) ? sanitize_text_field( wp_unslash( $_POST['project_investment'] ) ) : '';
+	$location = isset( $_POST['project_location'] ) ? sanitize_text_field( wp_unslash( $_POST['project_location'] ) ) : '';
 	$areas      = isset( $_POST['project_area'] ) && is_array( $_POST['project_area'] )
 		? array_map( 'sanitize_text_field', wp_unslash( $_POST['project_area'] ) )
 		: array();
 
-	if ( ! $name || ! is_email( $email ) || ! $context ) {
+	$category = count( $areas ) === 1 ? mnyphoto_category( $areas[0] ) : null;
+	$date_valid = ! $timing;
+	if ( $timing && preg_match( '/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $timing, $date_parts ) ) {
+		$date_valid = checkdate( (int) $date_parts[2], (int) $date_parts[3], (int) $date_parts[1] );
+	}
+	if ( ! $name || ! is_email( $email ) || ! $context || ! $category || ! $date_valid || strlen( $name ) > 600 || strlen( $context ) > 20000 ) {
 		wp_safe_redirect( add_query_arg( 'brief', 'invalid', $redirect ) );
 		exit;
 	}
 
-	$subject = sprintf( __( 'New project brief from %s', 'nolan-young-theme-template-99-master' ), $name );
+	$subject = sprintf( __( 'New photography inquiry from %s', 'mnyphoto-theme' ), $name );
 	$message = implode(
 		"\n\n",
 		array(
-			sprintf( __( 'Name: %s', 'nolan-young-theme-template-99-master' ), $name ),
-			sprintf( __( 'Email: %s', 'nolan-young-theme-template-99-master' ), $email ),
-			sprintf( __( 'Pressure areas: %s', 'nolan-young-theme-template-99-master' ), $areas ? implode( ', ', $areas ) : __( 'Not specified', 'nolan-young-theme-template-99-master' ) ),
-			sprintf( __( 'Timing: %s', 'nolan-young-theme-template-99-master' ), $timing ? $timing : __( 'Not specified', 'nolan-young-theme-template-99-master' ) ),
-			sprintf( __( 'Investment: %s', 'nolan-young-theme-template-99-master' ), $investment ? $investment : __( 'Not specified', 'nolan-young-theme-template-99-master' ) ),
-			__( 'Project context:', 'nolan-young-theme-template-99-master' ) . "\n" . $context,
+			sprintf( __( 'Name: %s', 'mnyphoto-theme' ), $name ),
+			sprintf( __( 'Email: %s', 'mnyphoto-theme' ), $email ),
+			sprintf( __( 'Photography: %s', 'mnyphoto-theme' ), $category['name'] ),
+			sprintf( __( 'Timing: %s', 'mnyphoto-theme' ), $timing ? $timing : __( 'Not specified', 'mnyphoto-theme' ) ),
+			sprintf( __( 'Location: %s', 'mnyphoto-theme' ), $location ? $location : __( 'Not specified', 'mnyphoto-theme' ) ),
+			__( 'Inquiry:', 'mnyphoto-theme' ) . "\n" . $context,
 		)
 	);
 	$sent    = wp_mail(

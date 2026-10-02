@@ -207,3 +207,5 @@ The entire implementation is one line in build/test-theme.js, line 1. It reads f
 This is documentation, not a Node.js executable. It explains the current build scripts, source graphs, generated outputs, PHP and archive boundaries, WordPress enqueue integration, and GitHub Actions workflow. It does not participate in npm run dev, npm run build, npm run lint:php, or npm run package.
 
 The runtimeEntries allowlist in build/package-theme.js, lines 12-18, excludes the entire build/ directory, so this documentation file is not placed in the installable theme ZIP. The root .deployignore also excludes wp-content/themes/MNYphoto/build/ on lines 1-4.
+
+Photography redesign: Concept 03. Six categories, Services and Blog dropdowns only, moving gallery, monochrome styling. Bundled photography is AI-generated illustration; replace it in Customizer > Photography collections. Existing page identities and content are preserved.

@@ -14,6 +14,7 @@ $nytt99_includes = array(
 	'/inc/template-tags.php',
 	'/inc/customizer.php',
 	'/inc/navigation.php',
+	'/inc/photography.php',
 	'/inc/contact.php',
 );
 

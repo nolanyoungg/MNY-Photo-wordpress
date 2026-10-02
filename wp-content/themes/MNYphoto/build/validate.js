@@ -7,7 +7,7 @@ const requiredRuntimeFiles = [
   '404.php', 'archive.php', 'comments.php', 'footer.php', 'front-page.php',
   'functions.php', 'header.php', 'home.php', 'index.php', 'page.php',
   'search.php', 'searchform.php', 'sidebar.php', 'single.php', 'style.css',
-  'readme.txt', 'screenshot.png',
+  'readme.txt', 'screenshot.png', 'theme.json',
   'dist/css/bundle.css', 'dist/js/bundle.js',
 ];
 const requiredPageTemplates = [
@@ -15,11 +15,11 @@ const requiredPageTemplates = [
 ].map( ( page ) => `page-templates/page-template-${ page }.php` );
 const requiredIncFiles = [
   'contact.php', 'customizer.php', 'enqueue.php', 'helpers.php',
-  'navigation.php', 'setup.php', 'template-tags.php',
+  'navigation.php', 'photography.php', 'setup.php', 'template-tags.php',
 ];
 
 const pageParts = {
-  'page-front-page': [ 'hero', 'services', 'work', 'process', 'cta' ],
+  'page-front-page': [ 'hero', 'introduction', 'services', 'work', 'approach', 'process', 'blog', 'cta' ],
   'page-services': [ 'hero', 'sect01', 'sect02', 'sect03', 'sect04', 'sect05', 'sect06', 'cta' ],
   'page-about-us': [ 'hero', 'sect01', 'sect02', 'sect03', 'sect04', 'sect05', 'cta' ],
   'page-work': [ 'hero', 'sect01', 'sect02', 'sect03', 'sect04', 'sect05', 'cta' ],
@@ -29,7 +29,13 @@ const pageParts = {
   'page-404': [ 'hero', 'sect01', 'sect02', 'cta' ],
 };
 
+pageParts['page-shared'] = [ 'brand', 'header', 'nav-item', 'services-menu', 'blog-menu', 'footer', 'cta', 'editor', 'page', 'service-cards' ];
+pageParts['page-services'].push( 'category', 'faq' );
+pageParts['page-work'].push( 'card', 'viewer' );
+pageParts['page-blog'].push( 'card', 'featured', 'archive-hero', 'search-hero' );
+
 const pagePrefixes = {
+  'page-shared': 'shared',
   'page-front-page': 'front-page',
   'page-services': 'services',
   'page-about-us': 'about-us',

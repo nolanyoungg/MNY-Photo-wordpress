@@ -379,3 +379,9 @@ Homepage enhancement is maintained in `src/js/components/home-experience.js`; ma
 
 
 
+
+## Approved photography implementation — October 1, 2026
+
+Nolan approved docs/photography-concept-03.html and authorized production pushes with live Google Chrome verification. That approval supersedes the older agency palette, About/Work dropdown requirements, and sandbox-only visual workflow above. Keep the theme directory, build/dist folders, source/build separation, page-* directories, and content-[page]-[section].php naming. Required older part filenames remain as compatibility includes; entry templates compose the approved photography sections.
+
+Only Services and Blog have dropdowns. About and Portfolio are direct links; retain the Work template filename and existing page URL. The only categories are pets, portraits, family, homes/real estate, events, and landscapes. Use the approved four-panel moving hero and monochrome palette. Preserve native WordPress posts, editor content, comments, pagination, menu destinations, custom-logo/media controls, and maintained inquiry processing.

@@ -1,0 +1,5 @@
+<?php
+/** Photography presentation. @package MNYphoto */
+defined( 'ABSPATH' ) || exit;
+?>
+<dialog class="photo-viewer" id="photo-viewer" aria-labelledby="viewer-title"><div class="viewer-top"><span class="eyebrow">MNY PHOTO</span><button class="round-button" type="button" data-close="photo-viewer" aria-label="<?php esc_attr_e( 'Close photograph', 'mnyphoto-theme' ); ?>">×</button></div><img id="viewer-image" alt=""><div class="viewer-bottom"><div><h2 id="viewer-title"></h2><p id="viewer-caption"></p></div><div><button class="round-button" type="button" id="viewer-previous" aria-label="<?php esc_attr_e( 'Previous photograph', 'mnyphoto-theme' ); ?>">←</button><button class="round-button" type="button" id="viewer-next" aria-label="<?php esc_attr_e( 'Next photograph', 'mnyphoto-theme' ); ?>">→</button></div></div></dialog>

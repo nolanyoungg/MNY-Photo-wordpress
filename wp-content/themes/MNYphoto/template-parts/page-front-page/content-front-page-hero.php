@@ -1,62 +1,21 @@
 <?php
-/**
- * Front-page atelier hero.
- *
- * @package NolanYoungThemeTemplate99Master
- */
-
+/** Six collections in a four-panel moving gallery. @package MNYphoto */
 defined( 'ABSPATH' ) || exit;
-
-$practices = nytt99_mega_menu_data()['services']['items'];
+$order = array( 'pets', 'portraits', 'landscapes', 'homes', 'family', 'events' );
+$titles = array( 'pets' => __( 'A little wild.', 'mnyphoto-theme' ), 'portraits' => __( 'A new chapter.', 'mnyphoto-theme' ), 'landscapes' => __( 'A wider view.', 'mnyphoto-theme' ), 'homes' => __( 'A sense of home.', 'mnyphoto-theme' ), 'family' => __( 'Always together.', 'mnyphoto-theme' ), 'events' => __( 'In good company.', 'mnyphoto-theme' ) );
 ?>
-<section class="atelier-hero" data-home-editorial data-home-hero>
-	<div class="atelier-hero__mesh" aria-hidden="true"></div>
-	<div class="content-wrap atelier-hero__shell">
-		<div class="atelier-hero__topline"><span><?php esc_html_e( 'Independent digital practice', 'nolan-young-theme-template-99-master' ); ?></span><span><?php esc_html_e( 'New York / Working everywhere', 'nolan-young-theme-template-99-master' ); ?></span></div>
-		<div class="atelier-hero__layout">
-			<div class="atelier-hero__copy" data-reveal>
-				<p class="eyebrow"><?php esc_html_e( 'Strategy, experience, and engineering', 'nolan-young-theme-template-99-master' ); ?></p>
-				<h1><?php esc_html_e( 'Complex digital work.', 'nolan-young-theme-template-99-master' ); ?><strong><?php esc_html_e( 'Clearly made.', 'nolan-young-theme-template-99-master' ); ?></strong></h1>
-				<p><?php esc_html_e( 'We design and build the websites, products, search systems, intelligence layers, and AI tools that help ambitious teams make a meaningful next move.', 'nolan-young-theme-template-99-master' ); ?></p>
-				<div class="atelier-hero__actions">
-					<a class="atelier-button" href="<?php echo esc_url( nytt99_page_url( 'contact-us' ) . '#project-brief' ); ?>"><?php esc_html_e( 'Begin a project', 'nolan-young-theme-template-99-master' ); ?><span aria-hidden="true">&rarr;</span></a>
-					<a class="atelier-link" href="<?php echo esc_url( nytt99_page_url( 'work' ) ); ?>"><?php esc_html_e( 'Explore selected work', 'nolan-young-theme-template-99-master' ); ?></a>
-				</div>
-			</div>
-
-			<div class="network-globe" data-home-sculpture data-reveal aria-hidden="true">
-				<div class="network-globe__topline"><span><i></i>GLOBAL DIGITAL NETWORK</span><strong>LIVE / CONNECTED</strong></div>
-				<div class="network-globe__scene">
-					<div class="network-globe__halo"></div>
-					<div class="network-globe__sphere">
-						<div class="network-globe__surface"><i></i><i></i><i></i><i></i><i></i></div>
-						<div class="network-globe__latitude network-globe__latitude--one"></div>
-						<div class="network-globe__latitude network-globe__latitude--two"></div>
-						<div class="network-globe__latitude network-globe__latitude--three"></div>
-						<div class="network-globe__longitude network-globe__longitude--one"></div>
-						<div class="network-globe__longitude network-globe__longitude--two"></div>
-						<div class="network-globe__longitude network-globe__longitude--three"></div>
-						<span class="network-globe__pulse network-globe__pulse--one"></span>
-						<span class="network-globe__pulse network-globe__pulse--two"></span>
-						<span class="network-globe__pulse network-globe__pulse--three"></span>
-					</div>
-					<div class="network-globe__orbit"><i></i></div>
-					<svg class="network-globe__routes" viewBox="0 0 600 600" focusable="false">
-						<path d="M102 352 C196 142 399 122 508 260" />
-						<path d="M110 236 C238 442 412 460 508 326" />
-						<path d="M184 84 C356 184 420 334 374 520" />
-					</svg>
-					<?php foreach ( $practices as $index => $practice ) : ?>
-						<div class="network-globe__practice network-globe__practice--<?php echo esc_attr( $index + 1 ); ?>"><span><?php echo esc_html( $practice['code'] ); ?></span><strong><?php echo esc_html( $practice['signal'] ); ?></strong></div>
-					<?php endforeach; ?>
-					<div class="network-globe__core"><small>NY</small><strong>CONNECTED</strong></div>
-				</div>
-				<div class="network-globe__readout"><span>ONE PRACTICE</span><strong>FIVE SPECIALIST SYSTEMS</strong></div>
-				<div class="network-globe__coordinates"><span>40.7128° N</span><span>74.0060° W</span></div>
-			</div>
-		</div>
-		<nav class="atelier-hero__practices" aria-label="<?php esc_attr_e( 'Our practices', 'nolan-young-theme-template-99-master' ); ?>">
-			<?php foreach ( $practices as $practice ) : ?><a href="<?php echo esc_url( $practice['url'] ); ?>"><span><?php echo esc_html( $practice['code'] ); ?></span><?php echo esc_html( $practice['title'] ); ?></a><?php endforeach; ?>
-		</nav>
-	</div>
+<section class="hero" aria-label="<?php esc_attr_e( 'Featured photography', 'mnyphoto-theme' ); ?>" aria-roledescription="carousel">
+ <h1 class="sr-only"><?php esc_html_e( 'Your world, in focus. Photography by MNY Photo.', 'mnyphoto-theme' ); ?></h1>
+ <div class="hero-gallery" id="hero-gallery"><div class="hero-track" id="hero-track">
+ <?php foreach ( $order as $index => $id ) : $category = mnyphoto_category( $id ); ?>
+ <figure class="hero-frame" data-slide="<?php echo esc_attr( $id ); ?>" data-name="<?php echo esc_attr( $category['heroName'] ?? $category['name'] ); ?>" role="group" aria-roledescription="slide" aria-label="<?php echo esc_attr( sprintf( __( '%1$d of 6: %2$s', 'mnyphoto-theme' ), $index + 1, $category['full'] ) ); ?>">
+ <?php mnyphoto_image( $id, $index < 4 ? 'eager' : 'lazy', '', '(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw' ); ?>
+ <figcaption><span class="photo-index"><?php echo esc_html( sprintf( '%02d.', $index + 1 ) ); ?></span><h2><?php echo esc_html( $titles[ $id ] ); ?></h2><p class="eyebrow"><?php echo esc_html( 'homes' === $id ? $category['name'] : $category['full'] ); ?></p><a href="<?php echo esc_url( add_query_arg( 'collection', $id, mnyphoto_url( 'portfolio' ) ) ); ?>" class="image-link" aria-label="<?php echo esc_attr( sprintf( __( 'Explore %s', 'mnyphoto-theme' ), $category['full'] ) ); ?>">↗</a></figcaption>
+ </figure>
+ <?php endforeach; ?>
+ </div></div>
+ <div class="hero-bottom"><div class="hero-signature"><span class="eyebrow"><?php esc_html_e( 'YOUR WORLD, IN FOCUS.', 'mnyphoto-theme' ); ?></span><span class="hero-current"><span id="hero-count">01 / 06</span><span id="hero-word"><?php esc_html_e( 'Pets', 'mnyphoto-theme' ); ?></span></span></div>
+ <div class="hero-categories" id="hero-categories" role="group" aria-label="<?php esc_attr_e( 'Choose first featured photograph', 'mnyphoto-theme' ); ?>">
+ <?php foreach ( $order as $index => $id ) : $category = mnyphoto_category( $id ); ?><button type="button" data-hero-category="<?php echo esc_attr( $index ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Start gallery with %s', 'mnyphoto-theme' ), $category['name'] ) ); ?>" aria-pressed="<?php echo 0 === $index ? 'true' : 'false'; ?>"><span class="sr-only"><?php echo esc_html( $category['name'] ); ?></span></button><?php endforeach; ?>
+ </div><div class="gallery-controls"><button type="button" id="hero-previous" aria-label="<?php esc_attr_e( 'Previous featured photograph', 'mnyphoto-theme' ); ?>">←</button><button type="button" id="hero-pause" data-play-label="<?php esc_attr_e( 'Play moving gallery', 'mnyphoto-theme' ); ?>" data-pause-label="<?php esc_attr_e( 'Pause moving gallery', 'mnyphoto-theme' ); ?>" aria-label="<?php esc_attr_e( 'Pause moving gallery', 'mnyphoto-theme' ); ?>"><span aria-hidden="true">Ⅱ</span></button><button type="button" id="hero-next" aria-label="<?php esc_attr_e( 'Next featured photograph', 'mnyphoto-theme' ); ?>">→</button></div></div><span class="sr-only" id="hero-announcement" role="status"></span>
 </section>

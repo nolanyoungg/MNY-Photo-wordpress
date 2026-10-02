@@ -1,0 +1,5 @@
+<?php
+/** approach photography section. @package MNYphoto */
+defined( 'ABSPATH' ) || exit;
+?>
+<section class="approach"><div class="approach-photo"><?php mnyphoto_image( 'pets' ); ?></div><div class="approach-copy"><p class="eyebrow"><?php esc_html_e( 'LESS OVERTHINKING. MORE BEING THERE.', 'mnyphoto-theme' ); ?></p><h2><?php esc_html_e( 'Come as', 'mnyphoto-theme' ); ?><br><?php esc_html_e( 'you', 'mnyphoto-theme' ); ?> <em><?php esc_html_e( 'are.', 'mnyphoto-theme' ); ?></em></h2><p><?php esc_html_e( 'You don’t have to have it all figured out. A little conversation, a little direction, and space for the unexpected. That’s where good photographs begin.', 'mnyphoto-theme' ); ?></p><a class="button button-light" href="<?php echo esc_url( mnyphoto_url( 'contact' ) ); ?>"><?php esc_html_e( 'Let’s make a plan', 'mnyphoto-theme' ); ?> <span aria-hidden="true">↗</span></a><span class="approach-note"><?php esc_html_e( 'Real moments. A thoughtful eye.', 'mnyphoto-theme' ); ?></span></div></section>

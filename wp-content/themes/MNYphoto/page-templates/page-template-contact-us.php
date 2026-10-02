@@ -1,19 +1,16 @@
 <?php
-/**
- * Template Name: Contact Us
- *
- * @package NolanYoungThemeTemplate99Master
- */
-
+/** Template Name: Contact Us
+ * Template Post Type: page
+ * @package MNYphoto */
+defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
-<main id="content">
-	<?php get_template_part( 'template-parts/page-contact-us/content', 'contact-us-hero' ); ?>
-	<?php get_template_part( 'template-parts/page-contact-us/content', 'contact-us-sect01' ); ?>
-	<?php get_template_part( 'template-parts/page-contact-us/content', 'contact-us-sect02' ); ?>
-	<?php get_template_part( 'template-parts/page-contact-us/content', 'contact-us-sect03' ); ?>
-	<?php get_template_part( 'template-parts/page-contact-us/content', 'contact-us-sect04' ); ?>
-	<?php get_template_part( 'template-parts/page-contact-us/content', 'contact-us-sect05' ); ?>
-	<?php get_template_part( 'template-parts/page-contact-us/content', 'contact-us-cta' ); ?>
+<main id="content" tabindex="-1">
+<?php get_template_part( 'template-parts/page-contact-us/content', 'contact-us-hero' ); ?>
+<div class="shell contact-layout">
+<?php get_template_part( 'template-parts/page-contact-us/content', 'contact-us-sect01' ); ?>
+<?php get_template_part( 'template-parts/page-contact-us/content', 'contact-us-sect02' ); ?>
+</div>
+<?php mnyphoto_editor_content(); ?>
 </main>
-<?php get_footer();
+<?php get_footer(); ?>
