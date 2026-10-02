@@ -211,6 +211,8 @@ wp-content/
             npm run build
             npm run dev
             npm run package
+            npm run lint
+            npm run lint:js
             npm run lint:php
 
 
@@ -268,10 +270,14 @@ Before handoff:
 
 The only approved command surface for this theme is:
 
-- `npm install`
+- `npm ci` (reproducible installation; Node 24.11.0+ and npm 9+)
+- `npm install` (intentional dependency changes)
 - `npm run dev`
 - `npm run build`
+- `npm run lint`
+- `npm run lint:js`
 - `npm run lint:php`
+- `npm run package` (local ZIP only)
 
 
 

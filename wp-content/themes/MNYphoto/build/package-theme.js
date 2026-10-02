@@ -7,8 +7,8 @@ const { ZipArchive } = require('archiver');
 const root = path.resolve(__dirname, '..');
 const slug = 'MNYphoto-theme';
 const packageDirectory = path.resolve(root, '..', '..', 'zipped-theme');
-const outputPath = path.join(packageDirectory, `${slug}.zip`);
 const isPreflight = process.argv.includes('--preflight');
+const isRuntimeOnly = process.argv.includes('--runtime-only');
 const runtimeEntries = [
 	'404.php', 'archive.php', 'comments.php', 'footer.php', 'front-page.php',
 	'functions.php', 'header.php', 'home.php', 'inc', 'index.php', 'languages',
@@ -16,6 +16,17 @@ const runtimeEntries = [
 	'search.php', 'searchform.php', 'sidebar.php', 'single.php', 'style.css',
 	'template-parts', 'dist/css', 'dist/js', 'dist/images', 'dist/icons',
 ];
+const packageEntries = isRuntimeOnly ? runtimeEntries : fs.readdirSync(root)
+	.filter((entry) => entry !== 'node_modules').sort();
+
+function createPackageTimestamp(date = new Date()) {
+	const pad = (value) => String(value).padStart(2, '0');
+	const hours = date.getHours();
+	return [pad(date.getMonth() + 1), pad(date.getDate()), date.getFullYear(),
+		pad(hours % 12 || 12), pad(date.getMinutes()), pad(date.getSeconds()), hours >= 12 ? 'PM' : 'AM'].join('-');
+}
+
+const outputPath = path.join(packageDirectory, isRuntimeOnly ? `${slug}.zip` : `${slug}-${createPackageTimestamp()}.zip`);
 
 function verifyPackageDirectory() {
 	if (!fs.existsSync(packageDirectory)) {
@@ -81,7 +92,7 @@ function validateArchiveInventory(archivePath) {
 	const archiveEntries = listArchiveFiles(archivePath)
 		.filter((entry) => !entry.endsWith('/'))
 		.sort();
-	const expectedEntries = runtimeEntries.flatMap((entry) => listSourceFiles(path.join(root, entry), entry)).sort();
+	const expectedEntries = packageEntries.flatMap((entry) => listSourceFiles(path.join(root, entry), entry)).sort();
 	const invalidRoots = archiveEntries.filter((entry) => !entry.startsWith(`${slug}/`));
 	const missingEntries = expectedEntries.filter((entry) => !archiveEntries.includes(entry));
 	const extraEntries = archiveEntries.filter((entry) => !expectedEntries.includes(entry));
@@ -90,6 +101,13 @@ function validateArchiveInventory(archivePath) {
 		throw new Error(
 			`Archive inventory validation failed. Invalid root: ${invalidRoots.join(', ') || 'none'}; missing: ${missingEntries.join(', ') || 'none'}; extra: ${extraEntries.join(', ') || 'none'}`
 		);
+	}
+
+	const requiredFiles = ['style.css', 'index.php', 'functions.php', 'readme.txt', 'screenshot.png',
+		'dist/css/bundle.css', 'dist/js/bundle.js'];
+	const missingRequired = requiredFiles.filter((entry) => !archiveEntries.includes(`${slug}/${entry}`));
+	if (missingRequired.length) {
+		throw new Error(`Archive is missing required theme files: ${missingRequired.join(', ')}`);
 	}
 }
 
@@ -137,7 +155,7 @@ output.on('error', cleanup);
 archive.on('error', cleanup);
 archive.pipe(output);
 
-runtimeEntries.forEach((entry) => {
+packageEntries.forEach((entry) => {
 	const source = path.join(root, entry);
 	const destination = path.posix.join(slug, entry);
 

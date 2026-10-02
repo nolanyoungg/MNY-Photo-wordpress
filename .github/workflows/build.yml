@@ -24,15 +24,18 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
           cache-dependency-path: wp-content/themes/MNYphoto/package-lock.json
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint PHP
-        run: npm run lint:php
+      - name: Lint theme source
+        run: npm run lint
 
       - name: Build theme assets
         run: npm run build
+
+      - name: Verify committed production bundles
+        run: git diff --exit-code -- dist/css/bundle.css dist/js/bundle.js

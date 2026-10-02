@@ -173,7 +173,7 @@ export const initSiteNavigation = () => {
         }
 
         const links = feature.querySelector('[data-mega-links]');
-        let labels = [];
+        let labels;
         try {
           labels = JSON.parse(option.dataset.links || '[]');
         } catch {

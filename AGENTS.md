@@ -2,16 +2,16 @@
 
 ## Repository overview
 
-This repository contains the MNY Photo WordPress site theme. The main implementation is under `wp-content/themes/MNYphoto-theme/`.
+This repository contains the MNY Photo WordPress site theme. The main implementation is under `wp-content/themes/MNYphoto/`.
 
 Before making changes, read the relevant documentation:
 
 - `README.md` for the repository overview and documented development commands.
-- `wp-content/themes/MNYphoto-theme/README.md` for theme setup, packaging, forms, and photo provenance.
-- `wp-content/themes/MNYphoto-theme/accessibility/README.md` for accessibility requirements.
+- `wp-content/themes/MNYphoto/README.md` for theme setup, packaging, forms, and photo provenance.
+- `wp-content/themes/MNYphoto/accessibility/README.md` for accessibility requirements.
 - Any applicable workflow or policy files under `.github/` and the directory being changed.
 
-The theme README describes an `src/` build tree and npm commands, but this checkout currently contains no `src/` directory or package manifest. Treat those commands as conditional on the source/tooling being present; do not invent generated output or dependencies.
+The theme includes `src/`, `build/`, an npm manifest and lockfile, and tracked production bundles. Run tooling from `wp-content/themes/MNYphoto/` with Node 24.11.0+ and npm 9+. Use `npm ci`, `npm run lint`, and `npm run build`; never hand-edit generated bundles.
 
 ## General working rules
 
@@ -39,4 +39,4 @@ you should use the live address when pushing changes to production, the URL site
 
 ## Nested instructions
 
-`wp-content/themes/MNYphoto-theme/AGENTS.md` adds more specific instructions for theme work. It inherits this file.
+`wp-content/themes/MNYphoto/AGENTS.md` adds more specific instructions for theme work. It inherits this file.

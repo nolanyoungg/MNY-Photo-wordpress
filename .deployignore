@@ -4,6 +4,7 @@ wp-content/themes/MNYphoto/build/
 wp-content/themes/MNYphoto/node_modules/
 wp-content/themes/MNYphoto/package.json
 wp-content/themes/MNYphoto/package-lock.json
+wp-content/themes/MNYphoto/.editorconfig
 wp-content/themes/MNYphoto/.gitignore
 wp-content/themes/MNYphoto/AGENTS.md
 wp-content/themes/MNYphoto/README.md
