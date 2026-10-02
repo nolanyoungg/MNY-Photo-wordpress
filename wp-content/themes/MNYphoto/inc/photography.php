@@ -164,6 +164,13 @@ function mnyphoto_capability_url( $category, $index ) {
 
 /** Existing editor content stays available within the new page composition. */
 function mnyphoto_editor_content() {
+	$assigned = get_page_template_slug( get_queried_object_id() );
+	$legacy = 'page-no-title' === $assigned;
+	foreach ( mnyphoto_page_templates() as $templates ) {
+		$legacy = $legacy || in_array( $assigned, array_slice( $templates, 1 ), true );
+	}
+	// Retain legacy demo copy in WordPress without appending old site layouts.
+	if ( $legacy && ! get_theme_mod( 'mnyphoto_show_legacy_content', false ) ) { return; }
 	if ( is_page() && trim( (string) get_post_field( 'post_content', get_queried_object_id() ) ) ) {
 		get_template_part( 'template-parts/page-shared/content', 'shared-editor' );
 	}

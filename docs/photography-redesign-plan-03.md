@@ -1,6 +1,6 @@
 # MNY Photo redesign — concept 03
 
-**Status: design review only.** October 1, 2026. This proposal responds to Nolan's four-panel photography reference and replaces concept 02's visual direction. WordPress implementation follows design approval, as requested. Previous concepts remain available for comparison.
+**Status: approved and implemented.** October 1, 2026. Nolan approved this direction and authorized production pushes and Google Chrome verification. The theme implementation is in `wp-content/themes/MNYphoto/`. Previous concepts remain available for comparison. The live WordPress site identity settings still require approval to replace the old Shibey branding.
 
 Open [photography-concept-03.html](photography-concept-03.html). The HTML uses local styles and JavaScript in [assets/photography-concept-03/](assets/photography-concept-03/) and the six existing generated photographs in [assets/photography-concept-02/](assets/photography-concept-02/). Keep both asset folders with the HTML. No external fonts, scripts, or image requests are required.
 
