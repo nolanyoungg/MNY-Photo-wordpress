@@ -216,7 +216,7 @@ em { font-family: inherit; font-style: normal; font-weight: inherit; }
 .home-approach { background: #202020; color: #fff; }
 .home-approach-scene { position: relative; min-height: 690px; height: min(78vw, 780px); }
 .home-approach-image { position: absolute; inset: 0; }
-.home-approach-image img { object-position: 50% 47%; }
+.home-approach-image img { object-position: 50% 18%; }
 .home-approach-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, #0005, #0003 40%, #0009); }
 .home-approach-overlay { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: end; padding-block: 50px 62px; }
 .home-approach-overlay .home-section-label { margin-bottom: auto; }
@@ -305,9 +305,12 @@ em { font-family: inherit; font-style: normal; font-weight: inherit; }
   .home-work-foot { display: block; margin-top: 8px; padding-top: 25px; }
   .home-work-foot>p { font-size: 17px; }
   .home-work-foot .eyebrow { display: block; margin-top: 20px; }
-  .home-approach-scene { height: 680px; min-height: 0; }
-  .home-approach-image img { object-position: 48% 50%; }
-  .home-approach-overlay { padding-block: 32px 45px; }
+  .home-approach-scene { height: auto; min-height: 0; }
+  .home-approach-image { position: relative; height: 340px; }
+  .home-approach-image img { object-position: 48% 25%; }
+  .home-approach-image::after { background: linear-gradient(transparent 55%, #202020a6); }
+  .home-approach-overlay { height: auto; padding-block: 32px 40px; }
+  .home-approach-overlay .home-section-label { margin-bottom: 32px; }
   .home-approach h2 { font-size: clamp(45px, 10.9vw, 68px); }
   .home-approach-overlay>p { font-size: 12px; }
   .home-approach-bottom { grid-template-columns: 1fr; gap: 25px; padding-block: 40px 50px; }
