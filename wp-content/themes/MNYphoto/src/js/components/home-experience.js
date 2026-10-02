@@ -52,7 +52,7 @@ export function initHomeExperience() {
     request = null;
     if (!canMove() || !cycleWidth) { lastTime = null; return; }
     // Constant physical speed, with no interval, slide dwell, or wrap transition.
-    if (lastTime !== null) offset = wrap(offset + Math.min(time - lastTime, 64) * (frameWidth > 450 ? 0.022 : 0.028));
+    if (lastTime !== null) offset = wrap(offset + (time - lastTime) * (frameWidth > 450 ? 0.022 : 0.028));
     lastTime = time;
     draw();
     request = requestAnimationFrame(tick);
