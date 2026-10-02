@@ -80,3 +80,22 @@ No theme PHP, theme source styles/scripts, production bundles, or deployment set
 - Checked JavaScript syntax and local file references. Browser logs contained no warnings or errors in the exercised views. Verified that the pre-existing tracked theme/tooling diff was unchanged.
 
 Reduced-motion handling is implemented; the operating system preference was not changed during these checks. The checks cover the local HTML prototype. Actual WordPress rendering, real content, maintained forms, and production image optimization remain part of implementation after design approval.
+
+
+## Implementation and live verification
+
+Implemented in `wp-content/themes/MNYphoto/` and pushed to `production`. The live site now activates the `MNYphoto` folder; the separate older `MNYphoto-theme` installation remains available. Source changes are compiled through the retained build tooling, and existing dist images/icons remain present.
+
+Google Chrome checks on https://mnyphoto.mystagingwebsite.com/ confirmed:
+
+- Four visible hero panels on desktop and one at a measured 391 CSS-pixel phone viewport; no horizontal page overflow on the phone viewport.
+- Gallery previous/next wrap between Pets and Events, manual navigation pauses playback, and automatic movement advances through the six categories.
+- Services and Blog are the only dropdowns; mobile expansion, Escape dismissal, portfolio filtering, photo-viewer opening/closing, and focus restoration work.
+- Existing Services (`what-we-do`), About (`who-we-are`), Portfolio (`work`), Contact, Policy, Blog (`resources`), single posts, search, campaign, and 404 routes render their respective templates.
+- Native post content and the existing comment remain intact. Legacy demo layouts stay saved without being appended to the new photography pages.
+- Charcoal footer/CTA, local optimized photography, and transparent gallery controls render correctly. Chrome reported no captured JavaScript errors in the final checked tab.
+- WordPress reported that its edge cache was cleared after deployment.
+
+Validation: PHP syntax passed for 101 files, JavaScript lint passed, production build passed, and the structure validator confirmed 73 template parts, six page templates, and eight helper modules. Packaging passed. Contact validation was exercised with isolated mail stubs; no live inquiry email was sent.
+
+Remaining deployment checks: automatic approval review rejected editing the WordPress site identity as separate from theme deployment. The title/tagline and old Shibey logo/icon assignments remain pending Nolan's explicit approval. Browser security policy blocked Chrome settings access for clearing cookies, so a clean-cookie/logged-out Chrome check remains outstanding. Screenshots captured during this pass include the logged-in WordPress toolbar. Full visual approval depends on finishing those identity and session checks.
