@@ -1,0 +1,11 @@
+.hero{--unit:clamp(140px,11vw,185px);--gap:8px;height:auto;display:flex;flex-direction:column;background:white;color:#202020}
+.hero-copy{position:static;order:0;display:grid;grid-template-columns:1.6fr .7fr;gap:7%;align-items:end;max-width:1400px;width:calc(100% - 112px);margin:30px auto 50px}
+.hero-copy h1{font-size:clamp(57px,5.4vw,85px)}.hero-caption>p{max-width:285px;margin-top:0}.hero-caption>a{margin-top:18px}
+.motion-board{position:static;order:1;z-index:auto;height:calc(var(--unit)*3 + var(--gap)*2)}.hero-shade{display:none}
+.lane--contact-mosaic{height:100%}.lane--contact-mosaic .loop-group{display:grid;grid-template-columns:repeat(8,var(--unit));grid-template-rows:repeat(3,var(--unit));gap:var(--gap);padding-right:var(--gap)}
+.lane--contact-mosaic .tile-1{grid-area:1/1/3/3}.lane--contact-mosaic .tile-2{grid-area:1/3/4/4}.lane--contact-mosaic .tile-3{grid-area:1/4/3/7}.lane--contact-mosaic .tile-4{grid-area:1/7/2/9}.lane--contact-mosaic .tile-5{grid-area:2/7/4/9}.lane--contact-mosaic .tile-6{grid-area:3/1/4/3}.lane--contact-mosaic .tile-7{grid-area:3/4/4/5}.lane--contact-mosaic .tile-8{grid-area:3/5/4/6}.lane--contact-mosaic .tile-9{grid-area:3/6/4/7}
+.collection-intro>div>p{letter-spacing:.06em;text-transform:uppercase;font-size:10px}.collection-intro{border-bottom:1px solid #d6d6d6;margin-bottom:55px}
+.contact-section,.site-footer{background:#f3f3f1;color:#202020}.contact-inner>div:last-child>p,.footer-bottom{color:#646464}.contact-section .button{background:#202020;color:#fff}.footer-bottom>a{color:#202020}.footer-top{border-color:#ccc}
+@media(max-width:1100px){.hero-copy{width:calc(100% - 72px);gap:5%}.hero-copy h1{font-size:61px}}
+@media(max-width:800px){.hero-copy{width:calc(100% - 44px);grid-template-columns:1.4fr .8fr}.hero-copy h1{font-size:50px}.hero-caption>p{font-size:13px}}
+@media(max-width:600px){.hero{--unit:132px;--gap:7px}.hero-copy{display:block;width:calc(100% - 40px);margin:27px auto 32px}.hero-copy h1{font-size:48px}.hero-caption>p{margin-top:19px}.hero-caption>a{margin-top:9px}.collection-intro{margin-bottom:32px}}

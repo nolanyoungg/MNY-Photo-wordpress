@@ -1,0 +1,24 @@
+.header { background:#fff; }
+.cover { margin:0 24px; position:relative; height:690px; }
+.cover>.picture { position:absolute; inset:0; }
+.cover img { object-position:50% 45%!important; }
+.landscape-title { position:absolute; left:32px; bottom:35px; background:#fff; padding:32px 40px 25px; width:min(710px,65%); }
+.cover h1 { font-size:clamp(57px,5vw,83px); }
+.cover .hero-copy p { font-size:14px; margin-top:20px; }
+.cover .browse-link { margin-top:10px; }
+.collection-intro { padding-block:65px; }
+.collection { padding-bottom:80px; }
+.wide-heading { width:min(1440px,calc(100% - 112px)); margin:0 auto 30px; display:flex; align-items:baseline; justify-content:space-between; gap:50px; }
+.wide-heading h2 { font-size:55px; }
+.wide-heading>p { font-size:14px; color:#666; }
+.collection .photograph { margin-inline:24px; }
+.open-photo { aspect-ratio:2.5; }
+.portraits .open-photo { aspect-ratio:2; }
+.photograph figcaption { padding-left:32px; }
+.collection-copy { width:min(1440px,calc(100% - 112px)); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:100px; }
+.collection-copy .description { font-size:15px; margin-top:16px; }
+.collection-copy .scope { max-width:330px; margin:18px 0 0 auto; }
+.afterword { border-top:1px solid var(--line); }
+@media(max-width:1100px) { .cover { height:570px; } .landscape-title { width:68%; } .cover h1 { font-size:63px; } .wide-heading,.collection-copy { width:calc(100% - 72px); } }
+@media(max-width:800px) { .cover { margin-inline:16px; height:550px; } .landscape-title { left:20px; bottom:25px; padding:25px; width:80%; } .cover h1 { font-size:56px; } .wide-heading,.collection-copy { width:calc(100% - 44px); } .wide-heading h2 { font-size:42px; } .wide-heading>p { font-size:12px; max-width:220px; } .collection-copy { gap:40px; } .collection .photograph { margin-inline:16px; } .open-photo { aspect-ratio:2; } }
+@media(max-width:600px) { .cover { margin:0 12px; height:auto; padding-top:285px; } .cover>.picture { height:360px; } .landscape-title { position:relative; width:calc(100% - 26px); margin:0 auto; left:auto; bottom:auto; padding:24px 20px 15px; } .cover h1 { font-size:46px; } .cover .hero-copy p { font-size:13px; } .collection-intro { padding-block:35px; } .wide-heading { display:block; width:calc(100% - 40px); margin-bottom:22px; } .wide-heading h2 { font-size:38px; } .wide-heading>p { max-width:300px; margin-top:14px; font-size:13px; } .collection .photograph { margin-inline:12px; } .open-photo,.portraits .open-photo { aspect-ratio:1.4; } .photograph figcaption { padding-left:8px; } .collection-copy { display:block; width:calc(100% - 40px); } .collection-copy .description { font-size:14px; } .collection-copy .scope { margin:17px 0 0; } .collection { padding-bottom:50px; } }

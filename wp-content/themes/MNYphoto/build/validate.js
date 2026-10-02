@@ -49,6 +49,13 @@ const pagePrefixes = {
 const requiredTemplateParts = Object.entries( pageParts ).flatMap( ( [ directory, parts ] ) =>
   parts.map( ( part ) => `${ directory }/content-${ pagePrefixes[ directory ] }-${ part }.php` )
 );
+// Nolan's explicitly approved numbered portfolio parts retain their exact names.
+const numberedPortfolioParts = [
+  'page-portfolio/00-portfolio-hero.php',
+  'page-portfolio/01-portfolio-services-section.php',
+  'page-portfolio/02-portfolio-cta.php',
+];
+requiredTemplateParts.push( ...numberedPortfolioParts );
 
 const getFilesRecursively = ( directory ) => readdirSync( directory, { withFileTypes: true } ).flatMap( ( entry ) => {
   if ( [ 'node_modules', 'vendor', '.git' ].includes( entry.name ) ) return [];
@@ -83,7 +90,8 @@ if ( missingTemplateParts.length ) {
 const templateParts = getFilesRecursively( templatePartsDirectory ).filter( ( file ) => file.endsWith( '.php' ) );
 const invalidPartNames = templateParts
   .map( ( file ) => relative( templatePartsDirectory, file ) )
-  .filter( ( file ) => !/^page-[a-z0-9-]+[\\/]content-[a-z0-9-]+\.php$/.test( file ) );
+  .filter( ( file ) => !/^page-[a-z0-9-]+[\\/]content-[a-z0-9-]+\.php$/.test( file ) &&
+    !numberedPortfolioParts.includes( file.replaceAll( '\\', '/' ) ) );
 if ( invalidPartNames.length ) {
   throw new Error( `Template part naming violation: ${ invalidPartNames.join( ', ' ) }` );
 }

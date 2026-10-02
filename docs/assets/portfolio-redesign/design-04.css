@@ -1,0 +1,21 @@
+.cover { padding:50px 0 25px; }
+.essay-title { display:flex; justify-content:space-between; align-items:end; gap:60px; margin-bottom:50px; }
+.hero-copy { display:grid; grid-template-columns:1.15fr .6fr; gap:65px; flex:1; align-items:end; }
+.cover h1 { font-family:var(--serif); font-size:clamp(63px,5.6vw,94px); font-weight:500; line-height:1.04; letter-spacing:-.045em; }
+.hero-copy>p { max-width:250px; margin-bottom:8px; }
+.essay-title>.browse-link { display:none; }
+.triptych { display:grid; grid-template-columns:.7fr 1.5fr .7fr; gap:22px; align-items:end; }
+.triptych>div { height:365px; }
+.triptych>div:nth-child(2) { height:425px; }
+.cover-caption { display:flex; justify-content:space-between; padding:18px 0; gap:25px; }
+.collection { display:grid; grid-template-columns:1.4fr .8fr; gap:90px; align-items:center; padding:45px 0 85px; }
+.collection:nth-child(even) { grid-template-columns:.8fr 1.4fr; }
+.collection:nth-child(even) .photograph { order:2; }
+.collection h2 { font-size:15px; font-weight:400; letter-spacing:0; }
+.collection-title { font:500 clamp(38px,3.6vw,62px)/1.12 var(--serif); letter-spacing:-.04em; }
+.open-photo { aspect-ratio:1.2; }
+.family .open-photo,.homes .open-photo { aspect-ratio:1.5; }
+.afterword h2 { font-family:var(--serif); font-weight:500; }
+@media(max-width:1100px) { .hero-copy { gap:40px; } .triptych>div { height:300px; } .triptych>div:nth-child(2) { height:350px; } .collection,.collection:nth-child(even) { gap:50px; } }
+@media(max-width:800px) { .cover h1 { font-size:67px; } .triptych { gap:12px; } .triptych>div { height:240px; } .triptych>div:nth-child(2) { height:285px; } .collection,.collection:nth-child(even) { gap:30px; grid-template-columns:1.1fr 1fr; } .collection-title { font-size:38px; } }
+@media(max-width:600px) { .cover { padding-top:25px; } .hero-copy { display:block; } .cover h1 { font-size:62px; } .hero-copy>p { max-width:270px; } .essay-title { margin-bottom:30px; } .triptych { grid-template-columns:.75fr 1.5fr .75fr; gap:8px; } .triptych>div { height:195px; } .triptych>div:nth-child(2) { height:235px; } .triptych>div:nth-child(2) img { object-position:47% 25%!important; } .cover-caption { font-size:9px; gap:20px; } .cover-caption span:last-child { max-width:100px; text-align:right; } .collection,.collection:nth-child(even) { display:flex; flex-direction:column; gap:20px; align-items:stretch; padding-block:20px 55px; } .collection:nth-child(even) .photograph { order:0; } .collection-title { font-size:43px; } .open-photo { aspect-ratio:1.4; } }

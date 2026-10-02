@@ -74,6 +74,65 @@ function mnyphoto_categories() {
 }
 
 
+/** Approved portfolio copy, with the shared categories and editor-selected media. */
+function mnyphoto_portfolio_collections() {
+	$copy = array(
+		'pets' => array(
+			__( 'A little wild. Entirely themselves.', 'mnyphoto-theme' ),
+			__( 'Unhurried pet portraits with room for the head tilts, happy sprints, and familiar expressions.', 'mnyphoto-theme' ),
+			__( 'Pet portraits, outdoor sessions, and pets with their people.', 'mnyphoto-theme' ),
+			__( 'Their favorite place, their favorite person, and a little room to play.', 'mnyphoto-theme' ),
+			__( 'Plan a pet session', 'mnyphoto-theme' ),
+		),
+		'portraits' => array(
+			__( 'Your next chapter, in the frame.', 'mnyphoto-theme' ),
+			__( 'Natural portraits for a milestone, a new beginning, or simply a moment for yourself.', 'mnyphoto-theme' ),
+			__( 'College graduation, high school seniors, kids, and individual or self-portrait sessions.', 'mnyphoto-theme' ),
+			__( 'A graduation, a milestone, or simply a photograph that feels like you.', 'mnyphoto-theme' ),
+			__( 'Plan a portrait session', 'mnyphoto-theme' ),
+		),
+		'family' => array(
+			__( 'The people who make it yours.', 'mnyphoto-theme' ),
+			__( 'The closeness, the laughter, and the little things you’ll want to remember about this season together.', 'mnyphoto-theme' ),
+			__( 'Family sessions, generational portraits, and everyday moments.', 'mnyphoto-theme' ),
+			__( 'Bring your people. We’ll start with what makes this season yours.', 'mnyphoto-theme' ),
+			__( 'Plan a family session', 'mnyphoto-theme' ),
+		),
+		'homes' => array(
+			__( 'Make a place feel possible.', 'mnyphoto-theme' ),
+			__( 'A clear, thoughtful view of the space, its light, and the details that make a first impression.', 'mnyphoto-theme' ),
+			__( 'Homes for sale, rentals, interiors, and exteriors.', 'mnyphoto-theme' ),
+			__( 'Show the light, the space, and the details that make a place feel like home.', 'mnyphoto-theme' ),
+			__( 'Let’s photograph your property', 'mnyphoto-theme' ),
+		),
+		'events' => array(
+			__( 'Be there. Keep the feeling.', 'mnyphoto-theme' ),
+			__( 'Candid photographs of the people, atmosphere, and exchanges that bring a gathering to life.', 'mnyphoto-theme' ),
+			__( 'Celebrations, community gatherings, and school or business events.', 'mnyphoto-theme' ),
+			__( 'Tell us what’s happening, who’s coming, and what you want to remember.', 'mnyphoto-theme' ),
+			__( 'Tell us about your event', 'mnyphoto-theme' ),
+		),
+		'landscapes' => array(
+			__( 'A reason to look a little longer.', 'mnyphoto-theme' ),
+			__( 'Open spaces, changing skies, and the quiet details of a place worth remembering.', 'mnyphoto-theme' ),
+			__( 'Natural scenery, outdoor locations, and seasonal landscapes.', 'mnyphoto-theme' ),
+			__( 'A favorite view, a meaningful location, or a place you’d love to explore.', 'mnyphoto-theme' ),
+			__( 'Let’s talk landscapes', 'mnyphoto-theme' ),
+		),
+	);
+	$categories = mnyphoto_categories();
+	foreach ( $categories as &$category ) {
+		$values = $copy[ $category['id'] ];
+		$category['portfolio_title'] = $values[0];
+		$category['portfolio_description'] = $values[1];
+		$category['portfolio_scope'] = $values[2];
+		$category['portfolio_prompt'] = $values[3];
+		$category['portfolio_invitation'] = $values[4];
+	}
+	unset( $category );
+	return $categories;
+}
+
 /** Resolve existing assignments without renaming pages or slugs. */
 function mnyphoto_page_templates() {
 	return array(
@@ -192,6 +251,7 @@ function mnyphoto_post_image( $post_id, $loading = 'lazy' ) {
 function mnyphoto_body_classes( $classes ) {
 	$classes[] = 'mnyphoto-site';
 	if ( is_front_page() ) { $classes[] = 'is-home'; }
+	if ( is_page_template( mnyphoto_page_templates()['portfolio'] ) || 'work' === ( $GLOBALS['nytt99_virtual_showcase_route'] ?? '' ) ) { $classes[] = 'mnyphoto-portfolio'; }
 	return $classes;
 }
 add_filter( 'body_class', 'mnyphoto_body_classes' );

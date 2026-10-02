@@ -1,0 +1,20 @@
+.cover { position: relative; display: grid; grid-template-columns: repeat(12,1fr); grid-template-rows: auto 300px; gap: 18px; padding: 20px 0 45px; }
+.cover .hero-copy { grid-column: 1/9; grid-row: 1; padding: 35px 50px 85px 0; }
+.cover h1 { font-size: clamp(75px,8.1vw,142px); line-height: .99; }
+.cover .browse-link { grid-column: 1/9; grid-row: 1; align-self: end; justify-self: start; margin-bottom: 23px; }
+.cover-portrait { grid-column: 9/13; grid-row: 1/3; }
+.cover-pet { grid-column: 1/4; grid-row: 2; }
+.cover-landscape { grid-column: 4/9; grid-row: 2; }
+.cover-note { position: absolute; right: 0; bottom: 10px; }
+.collection { display: grid; grid-template-columns: 1.7fr .75fr; gap: 85px; align-items: center; padding-block: 45px 90px; }
+.collection:nth-child(even) { grid-template-columns: .75fr 1.7fr; }
+.collection:nth-child(even) .photograph { order: 2; }
+.collection:nth-child(even) .collection-copy { order: 1; }
+.collection-title { font-size: 40px; }
+.collection h2 { font-size: 16px; font-weight: 400; letter-spacing: 0; }
+.portraits .open-photo { aspect-ratio: 1.15; }
+.family .open-photo { aspect-ratio: 1.5; }
+.afterword { border-top: 1px solid var(--line); }
+@media(max-width:1100px) { .cover { grid-template-rows: auto 230px; } .cover h1 { font-size: 95px; } .collection,.collection:nth-child(even) { gap: 45px; } .collection-title { font-size: 33px; } }
+@media(max-width:800px) { .cover h1 { font-size: 73px; } .cover .hero-copy { padding-right: 25px; } .cover-portrait { grid-column: 8/13; } .cover .hero-copy,.cover .browse-link { grid-column: 1/8; } .cover-landscape { grid-column: 4/8; } .collection,.collection:nth-child(even) { grid-template-columns: 1.25fr 1fr; gap: 30px; } .collection:nth-child(even) .photograph { order: 0; } .collection-title { font-size: 28px; } }
+@media(max-width:600px) { .cover { grid-template-columns: repeat(2,1fr); grid-template-rows: auto 240px 165px; gap: 12px; padding-top: 15px; } .cover .hero-copy { grid-column: 1/-1; grid-row: 1; padding: 12px 0 68px; } .cover h1 { font-size: 64px; } .cover .hero-copy p { max-width: 280px; } .cover .browse-link { grid-column: 1/-1; grid-row: 1; margin-bottom: 10px; } .cover-portrait { grid-column: 2; grid-row: 2/4; } .cover-pet { grid-column: 1; grid-row: 2; } .cover-landscape { grid-column: 1; grid-row: 3; } .cover-note { font-size: 9px; } .collection,.collection:nth-child(even) { display: flex; flex-direction: column; gap: 20px; align-items: stretch; padding-block: 20px 55px; } .collection:nth-child(even) .photograph { order: 0; } .collection-copy { max-width: 420px; } .collection-title { font-size: 34px; } .portraits .open-photo { aspect-ratio: 1.3; } }

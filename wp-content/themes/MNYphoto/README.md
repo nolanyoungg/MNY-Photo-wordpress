@@ -14,6 +14,34 @@ The hero fills the viewport and moves continuously at a constant speed through a
 
 The homepage’s five editorial sections remain separate template parts: the studio introduction, interactive collection index, asymmetric selected-photo spread, full-width family-photography approach section, and three-step session guide. Collection previews respond to pointer and keyboard focus; all six service links remain native destinations. Styling is scoped to home-* classes in front-page.scss.
 
+The Portfolio page implements the approved `docs/portfolio-concept-12.html` design.
+Its existing Work page assignment and URL are retained, and the template includes
+exactly these three new sections under `template-parts/page-portfolio/`:
+
+- `00-portfolio-hero.php` — five continuously looping vertical photo columns,
+  reduced to four on tablets and three on phones, with a pause/play control.
+- `01-portfolio-services-section.php` — the six alternating photo/service sections,
+  collection anchors, and the existing full-image viewer.
+- `02-portfolio-cta.php` — the blue-to-lilac **Contact Us** section, with native
+  keyboard-operated category choices and category-prefilled inquiry links.
+
+Nolan explicitly requested these numbered filenames; the structure validator
+allows these three exact names while retaining the existing naming checks for
+other parts. All Portfolio styling is in `src/scss/pages/portfolio.scss`. The
+vertical motion lives in `src/js/components/portfolio.js`, independently of the
+homepage gallery. Media still uses the six existing Customizer controls and
+responsive WordPress attachment markup. Approved page copy is centralized in
+`mnyphoto_portfolio_collections()` in the existing photography helper module.
+Existing `?collection=` links take visitors to the matching section. The native
+CTA selector works without JavaScript; its category is passed to the maintained
+contact form. No form is submitted by the selector. The Work template suppresses
+the generic closing CTA to avoid showing two invitations, and retains editor
+content and the shared footer. Old `page-work` parts remain available.
+
+Manrope font sources and their SIL license are in `src/fonts/`; Webpack emits
+the font assets into `dist/images/fonts/`, which is included in theme packages.
+The font license is also retained beside the generated font files.
+
 Page entry files include sections from `template-parts/page-*`. Existing required filenames are retained, including compatibility parts for the new shared sections; top-level templates determine which sections render. New shared parts use `page-shared/content-shared-*.php`. The structure validator checks the full inventory, references, and the new `inc/photography.php` module.
 
 `dist/` and `build/` remain in place. Edit the active styles in `src/scss/base/globalelements.scss`, `layout/header.scss`, `layout/footer.scss`, `pages/photography.scss`, `pages/front-page.scss`, and `components/wordpress.scss`. The active JavaScript components are site navigation, home experience, photography gallery, and photography details. Existing unused modules are retained for compatibility; the entry point defines the active build.

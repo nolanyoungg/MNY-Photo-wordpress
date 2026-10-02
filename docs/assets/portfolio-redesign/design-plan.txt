@@ -1,0 +1,76 @@
+MNY Photo portfolio: second design pass
+
+Brief
+Ten separate, complete, self-contained HTML portfolio pages. Every page has a
+header, introduction, six photography sections, contact invitation, and footer.
+The six sections are pets, portraits, family, homes/real estate, events, and
+landscapes. Portraits include college graduates, high school seniors, kids, and
+individual/self-portrait sessions. Services and Blog alone have dropdowns.
+
+Design system
+Paper #ffffff; soft surface #f1f1f1; charcoal #202020; graphite #454545;
+secondary text #717171; rule #d9d9d9. Photographs supply the color.
+Manrope 400/600/800: clear body text and sculptural, tightly spaced headlines.
+Bodoni Moda 500: complete headings in the exhibition and photographic-book
+directions, never an italic or gray accent applied to one arbitrary word.
+Body measure 45–65 characters; 16–18px desktop and 15–16px phone copy.
+
+Ten compositions (each includes the entire six-section page)
+01 / Frame House: a typographic/photo mosaic and asymmetric image spreads.
+     [ large title      ][portrait]
+     [ pet ][landscape  ][portrait] -> six image-led spreads
+02 / After Hours: an immersive event photograph with a quiet dark gallery.
+     [ photograph / title over clear dark area ] -> alternating dark chapters
+03 / The Collection: a deliberate category-controlled photographic stage.
+     [title][six category choices] / [wide stage] -> six complete collections
+04 / Photo Essays: a family-centered triptych, followed by journal-like essays.
+     [pet][wide family][portrait] / title -> picture + meaningful session notes
+05 / On Display: an exhibition entrance with a complete landscape photograph.
+     [serif title] / [wide framed print] -> asymmetrical gallery labels and art
+06 / In Good Company: six tall photo panels, responding to pointer and focus.
+     [pet|portrait|family|home|event|landscape] -> generous collection grid
+07 / Everyday Extraordinary: bold typography interrupted by a photographic strip.
+     [oversized title] / [six picture strip] -> deliberately unbalanced mosaic
+08 / Out There: a panoramic landscape cover with a crisp inset title.
+     [wide photograph + title inset] -> six panoramic stories and wide captions
+09 / The Monograph: a photographic book with a serif cover and composed spreads.
+     [title][portrait][small pet] -> alternating full photographs and serif titles
+10 / Open Archive: a six-image opening wall with a compact navigational index.
+     [pet][portrait][family] / [home][event][landscape] -> six open archive rows
+
+Critique before implementation
+The first drafts repeated numbered labels, italic headline fragments, generic
+marketing copy, and section rules. Those devices did not help a visitor choose
+photography. Remove them. The six services are categories, not numbered steps.
+Every new opening must have a different silhouette before type or color is added.
+Keep the actual photographs large, descriptions specific to each service, and
+navigation simple. Do not claim sample images are client work or invent projects.
+Interaction serves browsing: category stage, native anchors, image enlargement.
+No decorative automatic animation or per-card reveal sequence.
+
+Delivery
+Each docs/portfolio-concept-XX.html embeds its own CSS, JavaScript, fonts and
+WebP photographs. It must remain usable when copied alone. Comparison links are
+convenience links; they are not required to render or use the portfolio page.
+Asset originals remain in the repository; original generated image prompts are
+in docs/photography-concept-02-prompts.json. Keep font OFL notices with exports.
+
+WordPress integration after direction approval
+Preserve page-templates/page-template-work.php and existing page identity/URL.
+Compose the chosen direction with get_template_part() calls under
+template-parts/page-work/, keeping content-work-[section].php naming.
+Keep existing required compatibility files. Proposed sections: hero, navigation,
+pets, portraits, family, homes, events, landscapes, cta; reuse the photo viewer.
+Use inc/photography.php category/media helpers, native page links, escaping and
+the mnyphoto-theme text domain. Styles go in src/scss/pages/work.scss; behavior
+goes in src/js/components/photography-details.js or a scoped work component.
+Rebuild dist through the existing build tools. No WordPress runtime change is
+made until a page direction is selected. build/ and dist/ are preserved.
+
+Verification boundaries
+Check HTML nesting, unique landmarks/IDs, six service sections, local anchors,
+embedded asset validity, CSS parsing, JS syntax, and responsive rules. Prior
+browser security policy blocked file:// access; do not bypass that restriction.
+Report visual browser verification as incomplete unless supported access changes.
+
+Completed checks: all ten exported documents have valid element nesting, one h1, unique IDs, exactly six service sections, two header dropdowns, resolved local anchors, valid embedded WebP images, and four valid embedded TTF fonts. CSS parsing and embedded JavaScript syntax checks passed. Each export includes both SIL OFL notices. Live theme files have no diff. Browser rendering and live interactions remain unverified for this draft revision.

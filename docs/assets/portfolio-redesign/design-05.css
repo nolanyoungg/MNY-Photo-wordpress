@@ -1,0 +1,23 @@
+body { --paper:#f8f8f8; }
+.cover { text-align:center; padding:55px 0 30px; }
+.cover h1 { font-family:var(--serif); font-weight:500; font-size:clamp(80px,8vw,134px); letter-spacing:-.055em; }
+.cover .hero-copy p { margin-inline:auto; max-width:480px; font-size:15px; }
+.exhibition-print { background:#fff; border:1px solid #e0e0e0; padding:36px; margin:45px auto 0; width:80%; box-shadow:0 8px 20px #00000008; }
+.exhibition-print img { width:100%; height:auto; aspect-ratio:2.3; object-fit:cover; }
+.print-label { display:flex; justify-content:space-between; width:80%; margin:20px auto 0; font-size:10px; color:#555; text-align:left; }
+.cover>.browse-link { margin-top:20px; }
+.collection-intro { padding-top:30px; }
+.collection { padding:55px 0 85px; }
+.collection .photograph { width:82%; margin-left:0; background:#fff; padding:34px; border:1px solid #e0e0e0; }
+.collection:nth-child(even) .photograph { margin-left:auto; }
+.collection .open-photo { aspect-ratio:auto; }
+.collection .open-photo img { height:auto; object-fit:contain; }
+.collection figcaption { padding-bottom:0; font-size:10px; }
+.collection-copy { width:48%; max-width:580px; padding-left:26px; border-left:1px solid #aaa; margin:35px 0 0 8%; }
+.collection:nth-child(even) .collection-copy { margin-left:auto; margin-right:7%; }
+.collection h2 { font:500 40px/1.1 var(--serif); letter-spacing:-.025em; }
+.collection .description { font-size:14px; margin-top:16px; }
+.portraits .photograph { width:65%; }
+.afterword h2 { font-family:var(--serif); font-weight:500; }
+@media(max-width:800px) { .exhibition-print { width:92%; padding:25px; } .print-label { width:92%; } .collection .photograph { width:93%; padding:25px; } .collection-copy { width:65%; } .portraits .photograph { width:80%; } }
+@media(max-width:600px) { .cover { padding-top:30px; } .cover h1 { font-size:65px; } .cover .hero-copy p { font-size:14px; max-width:285px; } .exhibition-print { width:100%; padding:17px; margin-top:30px; } .exhibition-print img { aspect-ratio:1.6; } .print-label { width:100%; font-size:9px; } .collection-intro { padding-top:15px; } .collection { padding-block:25px 45px; } .collection .photograph,.portraits .photograph { width:100%; padding:18px; } .collection-copy,.collection:nth-child(even) .collection-copy { width:calc(100% - 20px); padding-left:20px; margin:25px 0 0 20px; } .collection h2 { font-size:35px; } }

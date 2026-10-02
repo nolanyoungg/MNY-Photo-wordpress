@@ -1,0 +1,45 @@
+/* Deliberately scoped to the replacement contact section in design 12. */
+.session-picker{background:linear-gradient(120deg,#d9eaf5 0%,#e4e5f8 52%,#f0e2ef 100%);color:#202633}
+.session-picker .session-inner{padding-block:90px 85px}
+.session-picker .session-heading{display:grid;grid-template-columns:1.25fr .75fr;gap:8%;align-items:end;margin-bottom:55px}
+.session-picker .session-eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:22px;color:#4a5668}
+.session-picker .session-heading h2{font-size:clamp(44px,5.3vw,84px);line-height:1.07;font-weight:600}
+.session-picker .session-heading>p{font-size:14px;line-height:1.85;color:#4a5668;max-width:340px;margin-bottom:7px}
+.session-picker .session-layout{display:grid;grid-template-columns:.7fr 1.3fr;gap:7%;align-items:start}
+.session-picker .session-choices{border:0;padding:0;margin:0;min-width:0}
+.session-picker .session-choices legend{font-size:12px;color:#4a5668;padding:0 0 23px}
+.session-picker .session-choice{position:relative;display:flex;align-items:center;gap:18px;min-height:70px;padding:14px 16px;border-top:1px solid #26344840;cursor:pointer;transition:background .2s,color .2s}
+.session-picker .session-choice:last-child{border-bottom:1px solid #26344840}
+.session-picker .session-choice input{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+.session-picker .session-number{font-size:10px;opacity:.6;flex:none}
+.session-picker .session-name{font-size:18px;font-weight:400;line-height:1.35}
+.session-picker .session-arrow{margin-left:auto;font-size:23px;flex:none;opacity:.45;transition:transform .2s,opacity .2s}
+.session-picker .session-choice:hover{background:#ffffff70}
+.session-picker .session-choice:has(input:checked){background:#263448;color:#fff;border-color:#263448}
+.session-picker .session-choice:has(input:checked) .session-arrow{opacity:1;transform:translate(2px,-2px)}
+.session-picker .session-choice:has(input:focus-visible){outline:2px solid #263448;outline-offset:5px;z-index:1}
+.session-picker .session-previews{min-width:0}
+.session-picker .session-panel{display:none;animation:mny-session-enter .3s ease-out both}
+.session-picker:has(#session-pets:checked) #session-preview-pets,
+.session-picker:has(#session-portraits:checked) #session-preview-portraits,
+.session-picker:has(#session-family:checked) #session-preview-family,
+.session-picker:has(#session-homes:checked) #session-preview-homes,
+.session-picker:has(#session-events:checked) #session-preview-events,
+.session-picker:has(#session-landscapes:checked) #session-preview-landscapes{display:block}
+.session-picker .session-image{position:relative;aspect-ratio:1.7;overflow:hidden;background:#383838}
+.session-picker .session-image img{width:100%;height:100%;object-fit:cover}
+.session-picker .session-image figcaption{position:absolute;left:18px;bottom:16px;background:#202020d9;color:white;padding:7px 12px;font-size:10px;line-height:1.5}
+.session-picker .session-details{padding-top:25px}
+.session-picker .session-details h3{font-size:clamp(25px,2.2vw,34px);font-weight:400;letter-spacing:-.04em;line-height:1.22;min-height:2.44em;max-width:600px;text-wrap:balance}
+.session-picker .session-details>p{font-size:13px;line-height:1.8;color:#4a5668;margin-top:12px;max-width:560px;min-height:3.6em}
+.session-picker .session-details>.session-scope{font-size:11px;color:#546074;margin-top:10px}
+.session-picker .session-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px 25px;margin-top:20px}
+.session-picker .session-actions .button{display:inline-flex;gap:24px;justify-content:space-between;min-height:49px;padding:12px 20px;font-size:11px;background:#263448;color:#fff}
+.session-picker .session-actions .button>span{font-size:20px;line-height:1}
+.session-picker .session-back{font-size:10px;display:inline-flex;align-items:center;gap:16px;min-height:44px;text-decoration:underline;text-underline-offset:5px}
+@keyframes mny-session-enter{from{opacity:.45;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1100px){.session-picker .session-layout{grid-template-columns:.8fr 1.2fr;gap:5%}.session-picker .session-name{font-size:16px}.session-picker .session-choice{gap:12px;padding-inline:12px;min-height:66px}.session-picker .session-heading{gap:5%}.session-picker .session-details h3{font-size:29px}}
+@media(max-width:800px){.session-picker .session-inner{padding-block:65px}.session-picker .session-heading{grid-template-columns:1.2fr .8fr;gap:30px;margin-bottom:38px}.session-picker .session-heading h2{font-size:53px}.session-picker .session-heading>p{font-size:12px}.session-picker .session-layout{grid-template-columns:.85fr 1.15fr;gap:28px}.session-picker .session-choices legend{font-size:11px;padding-bottom:18px}.session-picker .session-name{font-size:15px}.session-picker .session-choice{padding-inline:10px;gap:10px;min-height:64px}.session-picker .session-image{aspect-ratio:1.25}.session-picker .session-details h3{font-size:28px}.session-picker .session-details>p{font-size:12px}.session-picker .session-details>.session-scope{font-size:10px}.session-picker .session-actions{gap:8px}.session-picker .session-actions .button{width:100%}}
+@media(max-width:600px){.session-picker .session-inner{padding-block:52px}.session-picker .session-heading{display:block;margin-bottom:28px}.session-picker .session-eyebrow{font-size:10px;margin-bottom:19px}.session-picker .session-heading h2{font-size:45px}.session-picker .session-heading>p{font-size:13px;margin-top:22px;max-width:300px}.session-picker .session-layout{display:block}.session-picker .session-choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}.session-picker .session-choices legend{font-size:11px;padding-bottom:17px}.session-picker .session-choice,.session-picker .session-choice:last-child{border:1px solid #26344840;min-height:62px;padding:12px;gap:8px}.session-picker .session-number{display:none}.session-picker .session-name{font-size:13px}.session-picker .session-arrow{font-size:19px}.session-picker .session-image{aspect-ratio:1.5}.session-picker .session-details{padding-top:22px}.session-picker .session-details h3{font-size:29px}.session-picker .session-details>p{font-size:13px}.session-picker .session-details>.session-scope{font-size:11px}.session-picker .session-actions{margin-top:18px}.session-picker .session-actions .button{font-size:11px;min-height:50px}.session-picker .session-back{font-size:11px}.session-picker .session-choice:has(input:focus-visible){outline-offset:3px}}
+@media(prefers-reduced-motion:reduce){.session-picker .session-panel{animation:none}.session-picker .session-choice,.session-picker .session-arrow{transition:none}}
+@supports not selector(:has(*)){.session-picker .session-choices{display:none}.session-picker .session-layout{display:block}.session-picker .session-panel{display:block;margin-bottom:50px}.session-picker .session-panel:last-child{margin-bottom:0}}

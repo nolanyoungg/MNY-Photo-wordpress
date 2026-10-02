@@ -1,0 +1,19 @@
+.cover { padding:25px 0 0; }
+.cover .hero-copy { display:flex; align-items:baseline; justify-content:space-between; gap:55px; margin-bottom:40px; }
+.cover h1 { font-size:clamp(90px,10.5vw,177px); font-weight:600; letter-spacing:-.08em; }
+.cover .hero-copy p { max-width:245px; font-size:15px; }
+.archive-wall { display:grid; grid-template-columns:1.1fr .7fr 1.2fr; grid-template-rows:250px 250px; gap:15px; }
+.archive-wall>a { position:relative; overflow:hidden; }
+.archive-wall>a:after { content:''; position:absolute; inset:50% 0 0; background:linear-gradient(transparent,#0008); }
+.archive-wall span { position:absolute; left:20px; right:15px; bottom:15px; color:white; font-size:12px; z-index:1; }
+.collection-intro { padding-bottom:25px; }
+.collection { padding-block:40px 65px; display:grid; grid-template-columns: .95fr 1.25fr .75fr; gap:50px; align-items:start; }
+.collection h2 { font-size:clamp(38px,4vw,67px); padding-top:12px; font-weight:600; }
+.open-photo { aspect-ratio:1.15; }
+.family .open-photo,.homes .open-photo { aspect-ratio:1.5; }
+.collection .description { margin-top:10px; font-size:14px; }
+.collection .scope { font-size:11px; }
+.afterword { border-top:1px solid var(--line); }
+@media(max-width:1100px) { .cover h1 { font-size:113px; } .archive-wall { grid-template-rows:200px 200px; } .collection { gap:30px; grid-template-columns:.8fr 1.2fr .8fr; } .collection h2 { font-size:43px; } }
+@media(max-width:800px) { .cover .hero-copy { display:block; } .cover h1 { font-size:104px; } .cover .hero-copy p { max-width:440px; } .archive-wall { grid-template-rows:170px 170px; gap:10px; } .archive-wall span { font-size:10px; left:13px; bottom:12px; } .collection { grid-template-columns: .8fr 1.2fr; gap:25px; } .collection h2 { font-size:42px; } .collection .collection-copy { grid-column:2; } .collection .photograph { grid-row:1; grid-column:2; } }
+@media(max-width:600px) { .cover { padding-top:20px; } .cover h1 { font-size:69px; } .cover .hero-copy { margin-bottom:27px; } .cover .hero-copy p { font-size:14px; max-width:280px; margin-top:18px; } .archive-wall { grid-template-columns:1fr 1fr; grid-template-rows:185px 160px 185px; gap:9px; } .archive-wall span { font-size:10px; left:12px; right:10px; bottom:12px; } .collection { display:flex; flex-direction:column; gap:19px; padding-block:25px 45px; align-items:stretch; } .collection h2 { font-size:42px; padding-top:0; } .collection .photograph { order:1; } .collection .collection-copy { order:2; } .open-photo { aspect-ratio:1.4; } .collection .description { margin-top:0; } }

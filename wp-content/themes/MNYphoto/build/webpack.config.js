@@ -18,6 +18,11 @@ module.exports = ( _env, argv = {} ) => {
 		module: {
 			rules: [
 				{
+					test: /\.ttf$/i,
+					type: 'asset/resource',
+					generator: { filename: 'images/fonts/[name][ext]' },
+				},
+				{
 					test: /\.s[ac]ss$/i,
 					use: [
 						MiniCssExtractPlugin.loader,
