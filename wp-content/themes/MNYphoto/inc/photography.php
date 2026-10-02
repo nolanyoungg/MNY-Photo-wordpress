@@ -75,6 +75,30 @@ function mnyphoto_categories() {
 
 
 /** Resolve existing assignments without renaming pages or slugs. */
+function mnyphoto_page_templates() {
+	return array(
+		'services' => array( 'page-templates/page-template-services.php', 'page-templates/template-what-we-do.php' ),
+		'about' => array( 'page-templates/page-template-about-us.php', 'page-templates/template-who-we-are.php' ),
+		'portfolio' => array( 'page-templates/page-template-work.php', 'page-templates/template-our-work.php' ),
+		'contact' => array( 'page-templates/page-template-contact-us.php', 'page-templates/template-contact.php' ),
+		'privacy' => array( 'page-templates/page-template-privacy-policy.php', 'page-templates/template-policy.php' ),
+		'campaign' => array( 'page-templates/page-template-ppc-lp-2026.php' ),
+	);
+}
+
+/** Honor prior theme assignments while composing the new template parts. */
+function mnyphoto_legacy_page_template( $template ) {
+	if ( ! is_page() ) { return $template; }
+	$assigned = get_page_template_slug( get_queried_object_id() );
+	foreach ( mnyphoto_page_templates() as $templates ) {
+		if ( in_array( $assigned, array_slice( $templates, 1 ), true ) ) {
+			return get_theme_file_path( '/' . $templates[0] );
+		}
+	}
+	return $template;
+}
+add_filter( 'template_include', 'mnyphoto_legacy_page_template', 90 );
+
 function mnyphoto_url( $key ) {
 	static $urls = array();
 	if ( isset( $urls[ $key ] ) ) { return $urls[ $key ]; }
@@ -87,7 +111,9 @@ function mnyphoto_url( $key ) {
 	if ( 'privacy' === $key && get_privacy_policy_url() ) { return get_privacy_policy_url(); }
 	$paths = array( 'services' => 'services', 'about' => 'about-us', 'portfolio' => 'work', 'contact' => 'contact-us', 'privacy' => 'privacy-policy', 'campaign' => 'ppc-lp-2026' );
 	$path = isset( $paths[ $key ] ) ? $paths[ $key ] : sanitize_title( $key );
-	$pages = get_posts( array( 'post_type' => 'page', 'post_status' => 'publish', 'posts_per_page' => 1, 'fields' => 'ids', 'meta_key' => '_wp_page_template', 'meta_value' => 'page-templates/page-template-' . $path . '.php' ) );
+	$template_map = mnyphoto_page_templates();
+	$templates = $template_map[ $key ] ?? array( 'page-templates/page-template-' . $path . '.php' );
+	$pages = get_posts( array( 'post_type' => 'page', 'post_status' => 'publish', 'posts_per_page' => 1, 'fields' => 'ids', 'meta_query' => array( array( 'key' => '_wp_page_template', 'value' => $templates, 'compare' => 'IN' ) ) ) );
 	$urls[ $key ] = $pages ? get_permalink( $pages[0] ) : nytt99_page_url( $path );
 	return $urls[ $key ];
 }

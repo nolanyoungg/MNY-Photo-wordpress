@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 function mnyphoto_nav_key( $title, $url ) {
  $label = sanitize_title( $title );
  $path = basename( untrailingslashit( (string) wp_parse_url( $url, PHP_URL_PATH ) ) );
- $groups = array( 'services' => array( 'services' ), 'about' => array( 'about', 'about-us' ), 'portfolio' => array( 'work', 'portfolio' ), 'blog' => array( 'blog', 'journal', 'resources' ) );
+ $groups = array( 'services' => array( 'services', 'what-we-do' ), 'about' => array( 'about', 'about-us', 'who-we-are' ), 'portfolio' => array( 'work', 'portfolio' ), 'blog' => array( 'blog', 'journal', 'resources' ) );
  foreach ( $groups as $key => $aliases ) {
   if ( in_array( $label, $aliases, true ) || in_array( $path, $aliases, true ) ) { return $key; }
  }
