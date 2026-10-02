@@ -1,13 +1,11 @@
 /* WordPress integration and the approved full-width gallery foundation. */
 .hero { overflow: hidden; }
-.hero-gallery { overflow: hidden; height: calc(100svh - 80px - var(--admin-bar-height, 0px)); }
+.hero-gallery { overflow: clip; }
 .hero-track { will-change: transform; }
 .hero-frame { position: relative; overflow: hidden; }
 .hero-frame::after { content: ''; position: absolute; pointer-events: none; }
 .hero-frame figcaption { position: absolute; z-index: 1; color: #fff; }
 .hero-frame .eyebrow { text-transform: uppercase; }
-.hero-categories button { display: flex; align-items: center; position: relative; }
-.gallery-controls button { display: grid; place-items: center; }
 .is-home .site-header { top: var(--admin-bar-height, 0px); }
 .site-header { top: var(--admin-bar-height, 0px); }
 .admin-bar { --admin-bar-height: 32px; }
@@ -68,10 +66,9 @@
 #content:focus { outline: none; }
 [id^=cap-], [id^=service-], #project-brief { scroll-margin-top: 120px; }
 [id^=cap-]:focus, [id^=service-]:focus { outline: 2px solid var(--ink); outline-offset: 8px; }
-.no-js .nav-toggle, .no-js .mobile-toggle, .no-js .hero-categories, .no-js .gallery-controls { display: none; }
+.no-js .nav-toggle, .no-js .mobile-toggle, .no-js .hero-motion-toggle { display: none; }
 .no-js .hero-gallery { overflow-x: auto; }
 .no-js .hero-track { transform: none; }
-.no-js .hero-bottom { justify-content: center; }
 .no-js .main-nav { display: flex; position: static; }
 .no-js .is-home .site-header { position: relative; background: var(--ink); }
 @media (max-width: 900px) {
@@ -89,7 +86,6 @@
 }
 @media (max-width: 782px) { .admin-bar { --admin-bar-height: 46px; } }
 @media (max-width: 560px) {
-  .hero-gallery { height: calc(100svh - 100px - var(--admin-bar-height, 0px)); }
   .hero-frame, .hero-frame.is-active { flex-basis: 100%; }
   .main-nav { padding-left: 18px; max-height: calc(100dvh - 72px - var(--admin-bar-height, 0px)); }
   .blog-menu-grid { grid-template-columns: 1fr; }

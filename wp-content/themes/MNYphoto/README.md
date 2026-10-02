@@ -10,7 +10,9 @@ The homepage uses a four-panel moving photo gallery, a transparent header, and t
 
 The six categories are Pets, Portraits, Family, Homes & real estate, Events, and Landscapes. Portraits include college graduation, high school seniors, kids, and individual/self-portrait sessions. In **Appearance > Customize > Photography collections**, choose a Media Library image for each category. Core responsive attachment markup is used; bundled WebP derivatives provide the illustrated defaults.
 
-Gallery controls support pause/play, direct collection selection, previous/next, touch swipes, keyboard access, and reduced motion. Menus, modal dialogs, hidden tabs, and offscreen/hover/focus states pause autoplay. The gallery has usable static links without JavaScript. Portfolio filtering supports real URLs and browser history.
+The hero fills the viewport and moves continuously at a constant speed through all six collections, with a seamless repeated track and no bottom control strip. A small pause/play button overlays the photograph. Keyboard focus, menus, modal dialogs, hidden tabs, and an offscreen hero suspend motion; ordinary hover does not. Touch dragging is supported. Reduced motion and no-JavaScript modes provide a manually scrollable photo strip. Portfolio filtering supports real URLs and browser history.
+
+The homepage’s five editorial sections remain separate template parts: the studio introduction, interactive collection index, asymmetric selected-photo spread, full-width family-photography approach section, and three-step session guide. Collection previews respond to pointer and keyboard focus; all six service links remain native destinations. Styling is scoped to home-* classes in front-page.scss.
 
 Page entry files include sections from `template-parts/page-*`. Existing required filenames are retained, including compatibility parts for the new shared sections; top-level templates determine which sections render. New shared parts use `page-shared/content-shared-*.php`. The structure validator checks the full inventory, references, and the new `inc/photography.php` module.
 
