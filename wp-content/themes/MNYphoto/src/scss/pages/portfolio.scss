@@ -78,7 +78,7 @@ body.mnyphoto-portfolio{background:#fff;font-family:'MNY Manrope',Arial,sans-ser
   .mnyphoto-portfolio .header-inner,.mny-portfolio .portfolio-shell{width:calc(100% - 44px)}
   .mnyphoto-portfolio .header-inner{height:95px}
   .mnyphoto-portfolio .header-btn-cta{font-size:11px;padding:9px 14px;gap:15px}
-  .mnyphoto-portfolio .main-nav{top:95px;color:#202020;max-height:calc(100dvh - 95px - var(--admin-bar-height,0px))}
+  .mnyphoto-portfolio .main-nav{top:95px;background:#202020;color:#fff;max-height:calc(100dvh - 95px - var(--admin-bar-height,0px))}
   .mnyphoto-portfolio .dropdown{top:auto}
   .mny-portfolio .portfolio-motion-board{grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
   .mny-portfolio .portfolio-lane:nth-child(5){display:none}
