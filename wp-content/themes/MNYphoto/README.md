@@ -40,6 +40,23 @@ contact form. No form is submitted by the selector. The Work template suppresses
 the generic closing CTA to avoid showing two invitations, and retains editor
 content and the shared footer. Old `page-work` parts remain available.
 
+The About Us template implements sample **S061 / Notes, people, and everyday
+moments** from the October 2, 2026 About-page study. It composes the four requested
+numbered parts in `template-parts/page-about-us/`: `00-about-us-hero.php`,
+`02-about-us-meet-the-team.php`, `03-about-us-photo-cycle.php`, and
+`04-about-us-our-story.php`. The validator permits these exact names. The shared
+header, footer, and editor-content behavior remain in place; the sample's extra
+navigation is supplied by the site header.
+
+All S061 styles are in the dated block at the bottom of
+`src/scss/pages/about-us.scss`, imported by `main.scss`. Photo motion is maintained
+in `src/js/components/about-us.js`: pause/play, hover/focus pause, offscreen and
+hidden-tab suspension, and reduced-motion/manual-scroll fallbacks. Team details
+use native disclosures. The sample's Maria, Nolan, and Rock portrait and biography
+placeholders remain explicitly labeled; replace them with approved content in
+the team part. Photography uses the existing collection media controls and
+conditional AI-reference labels, so uploaded collection images also appear here.
+
 Manrope font sources and their SIL license are in `src/fonts/`; Webpack emits
 the font assets into `dist/images/fonts/`, which is included in theme packages.
 The font license is also retained beside the generated font files.

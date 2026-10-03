@@ -4,6 +4,7 @@ import { initHomeExperience } from './components/home-experience';
 import { initPhotographyGallery } from './components/photography-gallery';
 import { initPhotographyDetails } from './components/photography-details';
 import { initPortfolio } from './components/portfolio';
+import { initAboutPhotos } from './components/about-us';
 
 document.addEventListener('DOMContentLoaded', () => {
   initSiteNavigation();
@@ -11,5 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initPhotographyGallery();
   initPhotographyDetails();
   initPortfolio();
+  initAboutPhotos();
   document.querySelector('[data-form-notice]')?.focus();
 });

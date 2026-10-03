@@ -56,6 +56,14 @@ const numberedPortfolioParts = [
   'page-portfolio/02-portfolio-cta.php',
 ];
 requiredTemplateParts.push( ...numberedPortfolioParts );
+// Nolan's explicitly requested S061 About composition.
+const numberedAboutParts = [
+  'page-about-us/00-about-us-hero.php',
+  'page-about-us/02-about-us-meet-the-team.php',
+  'page-about-us/03-about-us-photo-cycle.php',
+  'page-about-us/04-about-us-our-story.php',
+];
+requiredTemplateParts.push( ...numberedAboutParts );
 
 const getFilesRecursively = ( directory ) => readdirSync( directory, { withFileTypes: true } ).flatMap( ( entry ) => {
   if ( [ 'node_modules', 'vendor', '.git' ].includes( entry.name ) ) return [];
@@ -91,7 +99,7 @@ const templateParts = getFilesRecursively( templatePartsDirectory ).filter( ( fi
 const invalidPartNames = templateParts
   .map( ( file ) => relative( templatePartsDirectory, file ) )
   .filter( ( file ) => !/^page-[a-z0-9-]+[\\/]content-[a-z0-9-]+\.php$/.test( file ) &&
-    !numberedPortfolioParts.includes( file.replaceAll( '\\', '/' ) ) );
+    ![ ...numberedPortfolioParts, ...numberedAboutParts ].includes( file.replaceAll( '\\', '/' ) ) );
 if ( invalidPartNames.length ) {
   throw new Error( `Template part naming violation: ${ invalidPartNames.join( ', ' ) }` );
 }
