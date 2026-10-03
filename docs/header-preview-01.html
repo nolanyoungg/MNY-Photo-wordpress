@@ -548,7 +548,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   const nav = document.getElementById('main-nav');
   const mobileToggle = document.querySelector('.mobile-toggle');
   const mobileMedia = window.matchMedia('(max-width:800px)');
-  let pinnedMenu = null;
   let currentMenu = null;
   function displayMenu(key) {
     currentMenu = key;
@@ -560,18 +559,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     header.dataset.menuOpen = String(Boolean(key) || nav.classList.contains('open'));
     document.dispatchEvent(new Event('mnyphoto:menu'));
   }
-  function closeMenus() {pinnedMenu = null;displayMenu(null);}
+  function closeMenus() {displayMenu(null);}
   function closeMobile() {nav.classList.remove('open');mobileToggle.setAttribute('aria-expanded','false');mobileToggle.setAttribute('aria-label','Open main menu');header.dataset.menuOpen = String(Boolean(currentMenu));document.dispatchEvent(new Event('mnyphoto:menu'));}
   document.querySelectorAll('[data-menu]').forEach(button => button.addEventListener('click',() => {
     const key = button.dataset.menu;
-    if (pinnedMenu === key && currentMenu === key) closeMenus();
-    else {pinnedMenu = key;displayMenu(key);}
+    if (currentMenu === key) closeMenus();
+    else displayMenu(key);
   }));
-  document.querySelectorAll('[data-nav-group]').forEach(group => {
-    group.addEventListener('pointerenter',event => {if (!mobileMedia.matches && event.pointerType !== 'touch' && !pinnedMenu) displayMenu(group.dataset.navGroup);});
-    group.addEventListener('pointerleave',() => {if (!mobileMedia.matches && !pinnedMenu && !group.contains(document.activeElement)) displayMenu(null);});
-    group.addEventListener('focusout',event => {if (!pinnedMenu && !group.contains(event.relatedTarget)) displayMenu(null);});
-  });
   mobileToggle.addEventListener('click',() => {
     const open = !nav.classList.contains('open');
     nav.classList.toggle('open',open);
