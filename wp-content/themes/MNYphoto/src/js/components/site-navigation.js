@@ -34,7 +34,11 @@ export function initSiteNavigation() {
     mobileToggle.setAttribute('aria-label',open ? 'Close main menu' : 'Open main menu');
     closeMenus();
   });
-  document.addEventListener('click',event => {if (!header.contains(event.target)) {closeMenus();closeMobile();}});
+  document.addEventListener('click',event => {
+    const activeGroup = currentMenu && header.querySelector(`[data-nav-group="${currentMenu}"]`);
+    if (activeGroup && !activeGroup.contains(event.target)) closeMenus();
+    if (!header.contains(event.target)) closeMobile();
+  });
   document.addEventListener('keydown',event => {
     if (event.key !== 'Escape') return;
     if (currentMenu) {const trigger = document.querySelector(`[data-menu="${currentMenu}"]`);closeMenus();trigger.focus();}

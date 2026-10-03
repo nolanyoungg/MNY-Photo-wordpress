@@ -36,7 +36,7 @@ export function initPortfolio() {
   }
   const canMove = () => !userPaused && !preference.matches && inView && !document.hidden &&
     (!hero.contains(document.activeElement) || document.activeElement === pause) &&
-    document.querySelector('.site-header')?.dataset.menuOpen !== 'true' && !document.querySelector('dialog[open]');
+    !document.querySelector('dialog[open]');
   function tick(time) {
     frame = null;
     if (!canMove()) { previousTime = null; return; }
@@ -69,7 +69,7 @@ export function initPortfolio() {
   pause.addEventListener('click', () => { userPaused = !userPaused; sync(); });
   hero.addEventListener('focusin', sync);
   hero.addEventListener('focusout', () => queueMicrotask(sync));
-  ['visibilitychange', 'mnyphoto:menu', 'mnyphoto:viewer'].forEach(event => document.addEventListener(event, sync));
+  ['visibilitychange', 'mnyphoto:viewer'].forEach(event => document.addEventListener(event, sync));
   preference.addEventListener('change', () => {
     if (!preference.matches) lanes.forEach(lane => { lane.element.scrollTop = 0; });
     measure();

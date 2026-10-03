@@ -21,7 +21,7 @@ const services = [
 ];
 const live = 'https://mnyphoto.mystagingwebsite.com';
 function dropdown(key, label, href, links) {
-  return `<div class="nav-group" data-nav-group="${key}"><div class="nav-row"><a href="${href}">${label}</a><button type="button" class="nav-toggle" aria-label="Open ${label} menu" aria-expanded="false" aria-controls="${key}-menu" data-menu="${key}"><span aria-hidden="true">+</span></button></div><div id="${key}-menu" class="dropdown" hidden><div class="shell preview-menu-links">${links}</div></div></div>`;
+  return `<div class="nav-group" data-nav-group="${key}"><div class="nav-row"><a href="${href}">${label}</a><button type="button" class="nav-toggle" aria-label="${label} menu" aria-expanded="false" aria-controls="${key}-menu" data-menu="${key}"><span class="nav-toggle-label" aria-hidden="true">${label}</span><svg class="nav-chevron" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 8 7 7 7-7" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" /></svg></button></div><div id="${key}-menu" class="dropdown" hidden><div class="shell preview-menu-links">${links}</div></div></div>`;
 }
 const nav = dropdown('services', 'Services', `${live}/what-we-do/`, services.map(([id, label]) => `<a href="#${id}">${esc(label)}</a>`).join(''))
   + `<a href="${live}/who-we-are/">About</a><a href="#portfolio" aria-current="page">Portfolio</a>`
@@ -34,7 +34,9 @@ header = header.replace("<?php get_template_part( 'template-parts/page-shared/co
   .replace(/<\?php (?:esc_attr_e|esc_html_e)\( '([^']+)', 'mnyphoto-theme' \); \?>/g, (_, label) => esc(label));
 if (header.includes('<?php') || !header.includes('mnyphoto-header-contact-cutout')) throw new Error('Incomplete header export.');
 
-html = html.replace(/<title>.*?<\/title>/, '<title>Liquid glass navigation — MNY Photo header preview 02</title>')
+html = html.replace('<html lang="en">', '<html lang="en" class="no-js">')
+  .replace('</head>', '<script>document.documentElement.classList.replace("no-js", "js");</script></head>')
+  .replace(/<title>.*?<\/title>/, '<title>Liquid glass navigation — MNY Photo header preview 02</title>')
   .replace(originalHeader, header);
 const heroCopySource = heroSource.match(/<div class="portfolio-hero-copy">[\s\S]*?<\/div>/)?.[0];
 const heroCopyStyles = portfolioStyles.match(/\/\* Hero readability panel:[\s\S]*?\/\* End hero readability panel\. \*\//)?.[0];
@@ -55,11 +57,10 @@ const adapterStyles = `
 `;
 html = html.replace('</head>', `<style>${headerStyles}\n${adapterStyles}\n${previewHeroStyles}</style></head>`);
 
-// Keep the sample's moving hero in sync with the real header's menu events.
+// Like the theme, keep the gallery moving behind open navigation menus.
 const oldMenuCondition = '!menus.some(menu => menu.open) && !viewer.open';
 if (!html.includes(oldMenuCondition)) throw new Error('Could not locate the sample motion menu condition.');
-html = html.replace(oldMenuCondition, "document.querySelector('[data-site-header]')?.dataset.menuOpen !== 'true' && !viewer.open")
-  .replace('  function canMove() {', "  document.addEventListener('mnyphoto:menu', () => sync());\n  function canMove() {");
+html = html.replace(oldMenuCondition, '!viewer.open');
 const navigation = navigationSource.replace('export function initSiteNavigation()', 'function initSiteNavigation()');
 html = html.replace('</body>', `<script>${navigation}\ninitSiteNavigation();</script></body>`);
 

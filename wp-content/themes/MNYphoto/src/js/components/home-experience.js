@@ -46,7 +46,7 @@ export function initHomeExperience() {
   const draw = () => { track.style.transform = 'translate3d(' + (-offset) + 'px,0,0)'; };
   const canMove = () => !userPaused && !reducedMotion.matches && inView && !document.hidden &&
     !drag && !track.contains(document.activeElement) &&
-    document.querySelector('.site-header')?.dataset.menuOpen !== 'true' && !document.querySelector('dialog[open]');
+    !document.querySelector('dialog[open]');
 
   function tick(time) {
     request = null;
@@ -101,7 +101,6 @@ export function initHomeExperience() {
   });
   track.addEventListener('focusout', () => { queueMicrotask(syncPlayback); });
   document.addEventListener('visibilitychange', syncPlayback);
-  document.addEventListener('mnyphoto:menu', syncPlayback);
   document.addEventListener('mnyphoto:viewer', syncPlayback);
   reducedMotion.addEventListener('change', motionPreference);
   new ResizeObserver(resize).observe(gallery);
