@@ -35,11 +35,27 @@ body.mnyphoto-portfolio{background:#fff;font-family:'MNY Manrope',Arial,sans-ser
 .mny-portfolio .portfolio-tile{position:relative;overflow:hidden;min-height:0;background:#383838}
 .mny-portfolio .portfolio-tile img{width:100%;height:100%;object-fit:cover}
 .mny-portfolio .portfolio-hero-shade{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(0deg,#000b,transparent 85%)}
-.mny-portfolio .portfolio-hero-copy{position:absolute;left:50%;bottom:80px;transform:translateX(-50%);width:min(850px,85%);text-align:center;pointer-events:none}
+/* Hero readability panel: feather only the backdrop, keeping the content sharp. */
+.mny-portfolio .portfolio-hero-copy{position:absolute;left:50%;bottom:65px;transform:translateX(-50%);width:max-content;max-width:calc(100% - 48px);padding:32px 22px 20px;border-radius:44px;isolation:isolate;text-align:center;pointer-events:none}
+.mny-portfolio .portfolio-hero-copy::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#070a10e6;filter:blur(12px);pointer-events:none}
 .mny-portfolio .portfolio-hero-copy h1{font-size:clamp(64px,6.5vw,112px);font-weight:600;line-height:1.04}
-.mny-portfolio .portfolio-hero-copy p{font-size:16px;line-height:1.7;max-width:410px;margin:23px auto 0}
-.mny-portfolio .portfolio-hero-copy>a{display:inline-flex;align-items:center;justify-content:center;gap:30px;min-height:44px;margin-top:24px;font-size:12px;pointer-events:auto}
+.mny-portfolio .portfolio-hero-copy>a{display:inline-flex;align-items:center;justify-content:center;gap:30px;min-height:44px;margin-top:20px;font-size:12px;pointer-events:auto}
 .mny-portfolio .portfolio-hero-copy>a span{font-size:24px}
+.mny-portfolio .portfolio-hero-copy>a:hover{text-decoration:underline;text-underline-offset:5px}
+@media(max-width:800px){
+  .mny-portfolio .portfolio-hero-copy{padding:30px 22px 20px;border-radius:40px}
+}
+@media(max-width:600px){
+  .mny-portfolio .portfolio-hero-copy{bottom:80px;padding:26px 18px 18px;border-radius:34px}
+  .mny-portfolio .portfolio-hero-copy::before{filter:blur(10px)}
+  .mny-portfolio .portfolio-hero-copy h1{font-size:clamp(42px,12vw,58px)}
+  .mny-portfolio .portfolio-hero-copy>a{font-size:11px;gap:24px;margin-top:15px}
+}
+@media(forced-colors:active){
+  .mny-portfolio .portfolio-hero-copy{background:Canvas;color:CanvasText;border:1px solid CanvasText}
+  .mny-portfolio .portfolio-hero-copy::before{display:none}
+}
+/* End hero readability panel. */
 .mny-portfolio .portfolio-motion-toggle{position:absolute;right:25px;bottom:25px;z-index:5;display:grid;place-items:center;width:46px;height:46px;border:1px solid #fff9;border-radius:50%;background:#20202070;backdrop-filter:blur(7px);color:white;font-size:18px;padding:0}
 .mny-portfolio .portfolio-motion-toggle[aria-pressed=true]{font-size:13px}
 .mny-portfolio .portfolio-hero[data-reduced=true] .portfolio-track{transform:none!important;will-change:auto}
@@ -82,7 +98,6 @@ body.mnyphoto-portfolio{background:#fff;font-family:'MNY Manrope',Arial,sans-ser
   .mnyphoto-portfolio .dropdown{top:auto}
   .mny-portfolio .portfolio-motion-board{grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
   .mny-portfolio .portfolio-lane:nth-child(5){display:none}
-  .mny-portfolio .portfolio-hero-copy p{font-size:15px}
   .mny-portfolio .portfolio-collection-intro{padding-block:55px 40px;display:block}
   .mny-portfolio .portfolio-collection-intro h2{font-size:40px;max-width:none}
   .mny-portfolio .portfolio-collection-intro nav{margin-top:25px;max-width:none;gap:4px 23px}
@@ -100,10 +115,6 @@ body.mnyphoto-portfolio{background:#fff;font-family:'MNY Manrope',Arial,sans-ser
   .mny-portfolio .portfolio-motion-board{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .mny-portfolio .portfolio-lane:nth-child(4){display:none}
   .mny-portfolio .portfolio-group{gap:8px;padding-bottom:8px;height:calc(var(--portfolio-height)*1.3);grid-template-rows:.8fr 1.2fr .7fr}
-  .mny-portfolio .portfolio-hero-copy{width:calc(100% - 44px);bottom:80px}
-  .mny-portfolio .portfolio-hero-copy h1{font-size:58px}
-  .mny-portfolio .portfolio-hero-copy p{font-size:14px;max-width:240px;margin-top:20px}
-  .mny-portfolio .portfolio-hero-copy>a{font-size:11px;gap:25px;margin-top:17px}
   .mny-portfolio .portfolio-motion-toggle{width:44px;height:44px;right:16px;bottom:18px}
   .mny-portfolio .portfolio-collection-intro{padding-block:45px 30px}
   .mny-portfolio .portfolio-collection-intro>div>p{font-size:12px;margin-bottom:15px}
